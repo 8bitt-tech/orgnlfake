@@ -30,7 +30,7 @@ export default function BankClient() {
             <TrailContainer />
 
             {/* Top Section: Header & Auth */}
-            <div className="flex items-center justify-between relative z-10 mt-8 md:mt-0">
+            <div className="flex items-center justify-between relative z-50 mt-8 md:mt-0 pointer-events-auto">
                 <div ref={brandRef} className="flex items-center gap-3">
                     <div className="h-[1px] w-12 bg-cyan-500 opacity-50" />
                     <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-cyan-400">
