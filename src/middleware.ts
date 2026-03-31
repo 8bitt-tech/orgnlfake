@@ -24,8 +24,8 @@ export async function middleware(request: NextRequest) {
         // Always allowed paths (public routes needed for auth and vault)
         const isPublicAllowed =
             pathname === '/construction' ||
-            pathname === '/login' ||
-            pathname === '/join' ||
+            pathname.startsWith('/login') ||
+            pathname.startsWith('/join') ||
             pathname.startsWith('/auth') ||
             pathname.startsWith('/_next') ||
             pathname.startsWith('/api') ||
