@@ -5,6 +5,7 @@ export async function updateSession(request: NextRequest) {
     let supabaseResponse = NextResponse.next({
         request,
     });
+    let user = null;
 
     // Check if we have valid Supabase configuration
     const isConfigured =
@@ -35,9 +36,10 @@ export async function updateSession(request: NextRequest) {
             }
         );
 
-        // Refresh session if expired
-        await supabase.auth.getUser();
+        // Refresh session if expired and eagerly fetch user
+        const { data } = await supabase.auth.getUser();
+        user = data.user;
     }
 
-    return supabaseResponse;
+    return { response: supabaseResponse, user };
 }

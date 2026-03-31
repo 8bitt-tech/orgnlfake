@@ -15,10 +15,16 @@ export async function middleware(request: NextRequest) {
     const isDeveloperCookie = request.cookies.get('developer_mode')?.value === 'true';
     const isDeveloper = isDeveloperParam || isDeveloperCookie;
 
+    // ── Normal Supabase session handling ────────────────
+    const { response, user } = await updateSession(request);
+
     // ── Construction mode gate ──────────────────────────
-    if (CONSTRUCTION_MODE && !isDeveloper) {
+    if (CONSTRUCTION_MODE && !isDeveloper && !user) {
         const isAllowed =
             pathname === '/construction' ||
+            pathname === '/login' ||
+            pathname === '/join' ||
+            pathname.startsWith('/auth') ||
             pathname.startsWith('/_next') ||
             pathname.startsWith('/api') ||
             pathname.startsWith('/favicon') ||
@@ -30,9 +36,6 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(url);
         }
     }
-
-    // ── Normal Supabase session handling ────────────────
-    const response = await updateSession(request);
 
     // If developer mode is enabled via query param, set a cookie for future requests
     if (isDeveloperParam && !isDeveloperCookie) {
