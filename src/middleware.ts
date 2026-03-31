@@ -16,11 +16,13 @@ export async function middleware(request: NextRequest) {
     const isDeveloper = isDeveloperParam || isDeveloperCookie;
 
     // ── Normal Supabase session handling ────────────────
-    const { response, user } = await updateSession(request);
+    const { response, user, isAdmin } = await updateSession(request);
 
     // ── Construction mode gate ──────────────────────────
-    if (CONSTRUCTION_MODE && !isDeveloper && !user) {
-        const isAllowed =
+    if (CONSTRUCTION_MODE && !isDeveloper && !isAdmin) {
+        
+        // Always allowed paths (public routes needed for auth and vault)
+        const isPublicAllowed =
             pathname === '/construction' ||
             pathname === '/login' ||
             pathname === '/join' ||
@@ -28,9 +30,16 @@ export async function middleware(request: NextRequest) {
             pathname.startsWith('/_next') ||
             pathname.startsWith('/api') ||
             pathname.startsWith('/favicon') ||
+            pathname.includes('/vault') || // Keep Fort Knox vault accessible to VIPs with tokens
             /\.(ico|png|jpg|jpeg|svg|gif|webp|avif|mp4|webm|css|js|woff|woff2|ttf)$/.test(pathname);
 
-        if (!isAllowed) {
+        // Creator allowed paths (only if logged in)
+        const isCreatorAllowed = user && (
+            pathname.startsWith('/dashboard') || 
+            pathname.startsWith('/@') // Allow /[username] portfolio paths assuming they start with @
+        );
+
+        if (!isPublicAllowed && !isCreatorAllowed) {
             const url = request.nextUrl.clone();
             url.pathname = '/construction';
             return NextResponse.redirect(url);

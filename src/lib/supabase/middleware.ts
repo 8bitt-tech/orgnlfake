@@ -6,6 +6,7 @@ export async function updateSession(request: NextRequest) {
         request,
     });
     let user = null;
+    let isAdmin = false;
 
     // Check if we have valid Supabase configuration
     const isConfigured =
@@ -39,7 +40,20 @@ export async function updateSession(request: NextRequest) {
         // Refresh session if expired and eagerly fetch user
         const { data } = await supabase.auth.getUser();
         user = data.user;
+
+        // Check if user is an admin
+        if (user && user.email) {
+            const { data: adminData } = await supabase
+                .from('admins')
+                .select('id')
+                .eq('email', user.email)
+                .single();
+            
+            if (adminData) {
+                isAdmin = true;
+            }
+        }
     }
 
-    return { response: supabaseResponse, user };
+    return { response: supabaseResponse, user, isAdmin };
 }
