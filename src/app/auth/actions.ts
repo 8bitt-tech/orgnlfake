@@ -22,6 +22,20 @@ export async function login(formData: FormData) {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (user) {
+        // Check if user is an admin — admins bypass construction mode and see the full site
+        if (user.email) {
+            const { data: adminData } = await supabase
+                .from('admins')
+                .select('id')
+                .eq('email', user.email)
+                .single();
+
+            if (adminData) {
+                revalidatePath('/', 'layout');
+                redirect('/');
+            }
+        }
+
         const { data: profile } = await supabase
             .from('profiles')
             .select('status')
@@ -41,6 +55,7 @@ export async function login(formData: FormData) {
     revalidatePath('/', 'layout');
     redirect('/dashboard');
 }
+
 
 
 export async function signup(formData: FormData) {
