@@ -46,8 +46,8 @@ export default function BankClient() {
                 </div>
             </div>
 
-            {/* Center Section: Main Content */}
-            <div className="flex flex-col gap-16 relative z-10">
+            {/* Center Section: Main Content — pointer-events-none so giant titles don't block auth links */}
+            <div className="flex flex-col gap-16 relative z-10 pointer-events-none">
                 <div>
                     <BlockReveal color="#ffffff" delay={0.2}>
                         <h1 className="nabla-title text-6xl md:text-[10rem] font-black uppercase leading-[0.85] tracking-tighter">
