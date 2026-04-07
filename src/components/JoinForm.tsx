@@ -43,6 +43,13 @@ const JoinForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Prevent accidental 'Enter' key submissions on earlier steps
+    if (currentStep < steps.length - 1) {
+      handleNext();
+      return;
+    }
+
     try {
       await fetch('/api/join', {
         method: 'POST',
@@ -230,20 +237,6 @@ const JoinForm = () => {
               <FormSelect label="Commitment Period" options={['1 Month', '3 Months', '6 Months+']} value={formData.commitment} onChange={v => updateFields({ commitment: v })} />
               <FormSelect label="Preferred Contact Method" options={['Email', 'WhatsApp', 'Instagram DM', 'Phone Call']} value={formData.contactMethod} onChange={v => updateFields({ contactMethod: v })} />
               <FormInput label="Preferred Start Date" type="date" value={formData.startDate} onChange={e => updateFields({ startDate: e.target.value })} />
-              <div style={{ paddingTop: '16px' }}>
-                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
-                  <input
-                    type="checkbox"
-                    required
-                    style={{ accentColor: '#ffffff', marginTop: '4px', width: '16px', height: '16px' }}
-                    checked={formData.isOver18}
-                    onChange={e => updateFields({ isOver18: e.target.checked })}
-                  />
-                  <span style={{ fontSize: '12px', color: '#9ca3af', lineHeight: 1.6, fontStyle: 'italic' }}>
-                    I confirm I am 18+ years of age and agree to the terms and conditions of orgnlfake agency.
-                  </span>
-                </label>
-              </div>
             </motion.div>
           )}
 
@@ -278,6 +271,20 @@ const JoinForm = () => {
                   value={formData.uniqueFactor}
                   onChange={e => updateFields({ uniqueFactor: e.target.value })}
                 />
+              </div>
+              <div style={{ paddingTop: '16px' }}>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    required
+                    style={{ accentColor: '#ffffff', marginTop: '4px', width: '16px', height: '16px' }}
+                    checked={formData.isOver18}
+                    onChange={e => updateFields({ isOver18: e.target.checked })}
+                  />
+                  <span style={{ fontSize: '12px', color: '#9ca3af', lineHeight: 1.6, fontStyle: 'italic' }}>
+                    I confirm I am 18+ years of age and agree to the terms and conditions of orgnlfake agency.
+                  </span>
+                </label>
               </div>
             </motion.div>
           )}
