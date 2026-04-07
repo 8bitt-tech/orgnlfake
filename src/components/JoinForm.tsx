@@ -124,7 +124,7 @@ const JoinForm = () => {
                 <FormInput label="Full Name" placeholder="John Doe" value={formData.fullName} onChange={e => updateFields({ fullName: e.target.value })} />
                 <FormInput label="Email" type="email" placeholder="email@example.com" value={formData.email} onChange={e => updateFields({ email: e.target.value })} />
                 <FormInput label="Phone" placeholder="+27..." value={formData.phone} onChange={e => updateFields({ phone: e.target.value })} />
-                <FormInput label="Date of Birth" type="date" value={formData.age} onChange={e => updateFields({ age: e.target.value })} />
+                <FormInput label="Date of Birth" type="date" value={formData.age} max="9999-12-31" onChange={e => updateFields({ age: e.target.value })} />
                 <FormInput label="Country" placeholder="South Africa" value={formData.country} onChange={e => updateFields({ country: e.target.value })} />
                 <FormInput label="City" placeholder="Johannesburg" value={formData.city} onChange={e => updateFields({ city: e.target.value })} />
               </div>
@@ -256,6 +256,7 @@ const JoinForm = () => {
                   rows={4}
                   value={formData.whyUs}
                   onChange={e => updateFields({ whyUs: e.target.value })}
+                  required
                 />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -270,6 +271,7 @@ const JoinForm = () => {
                   rows={4}
                   value={formData.uniqueFactor}
                   onChange={e => updateFields({ uniqueFactor: e.target.value })}
+                  required
                 />
               </div>
               <div style={{ paddingTop: '16px' }}>
@@ -351,8 +353,8 @@ const JoinForm = () => {
 
 /* ── Helper UI Components ── */
 
-const FormInput = ({ label, type = "text", placeholder, value, onChange }: {
-  label: string; type?: string; placeholder?: string; value: string;
+const FormInput = ({ label, type = "text", placeholder, value, max, onChange }: {
+  label: string; type?: string; placeholder?: string; value: string; max?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -361,6 +363,7 @@ const FormInput = ({ label, type = "text", placeholder, value, onChange }: {
       type={type}
       placeholder={placeholder}
       value={value}
+      max={max}
       onChange={onChange}
       style={{
         background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
