@@ -44,22 +44,30 @@ const JoinForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Prevent accidental 'Enter' key submissions on earlier steps
-    if (currentStep < steps.length - 1) {
+    // Safety: Only allow submission if on the absolute final step
+    if (currentStep !== steps.length - 1) {
       handleNext();
       return;
     }
 
+    // Double-check required final fields before proceeding
+    if (!formData.whyUs || !formData.uniqueFactor || !formData.isOver18) {
+      return;
+    }
+
     try {
-      await fetch('/api/join', {
+      const response = await fetch('/api/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+      }
     } catch (err) {
       console.error("Submit error:", err);
     }
-    setIsSubmitted(true);
   };
 
   const stepVariants = {
@@ -236,7 +244,7 @@ const JoinForm = () => {
               <FormSelect label="Monthly Budget Range" options={['R500 - R1,000', 'R1,000 - R3,000', 'R3,000 - R5,000', 'R5,000+']} value={formData.budget} onChange={v => updateFields({ budget: v })} />
               <FormSelect label="Commitment Period" options={['1 Month', '3 Months', '6 Months+']} value={formData.commitment} onChange={v => updateFields({ commitment: v })} />
               <FormSelect label="Preferred Contact Method" options={['Email', 'WhatsApp', 'Instagram DM', 'Phone Call']} value={formData.contactMethod} onChange={v => updateFields({ contactMethod: v })} />
-              <FormInput label="Preferred Start Date" type="date" value={formData.startDate} onChange={e => updateFields({ startDate: e.target.value })} />
+              <FormInput label="Preferred Start Date" type="date" value={formData.startDate} max="9999-12-31" onChange={e => updateFields({ startDate: e.target.value })} />
             </motion.div>
           )}
 
@@ -356,25 +364,51 @@ const JoinForm = () => {
 const FormInput = ({ label, type = "text", placeholder, value, max, onChange }: {
   label: string; type?: string; placeholder?: string; value: string; max?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-    <label style={{ fontSize: '11px', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</label>
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      max={max}
-      onChange={onChange}
-      style={{
-        background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-        borderRadius: '8px', padding: '12px', color: '#ffffff', outline: 'none',
-        fontSize: '0.9rem', transition: 'border-color 0.2s', boxSizing: 'border-box',
-      }}
-      onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)')}
-      onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
-    />
-  </div>
-);
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value;
+    
+    // Strict enforcement for date year lengths
+    if (type === 'date' && val) {
+      const parts = val.split('-');
+      if (parts[0] && parts[0].length > 4) {
+        parts[0] = parts[0].slice(0, 4);
+        val = parts.join('-');
+      }
+    }
+    
+    // Create a mock event for the parent's onChange if we modified the value
+    if (val !== e.target.value) {
+      const mockEvent = {
+        ...e,
+        target: { ...e.target, value: val }
+      } as React.ChangeEvent<HTMLInputElement>;
+      onChange(mockEvent);
+    } else {
+      onChange(e);
+    }
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <label style={{ fontSize: '11px', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</label>
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        max={max}
+        onChange={handleChange}
+        style={{
+          background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: '8px', padding: '12px', color: '#ffffff', outline: 'none',
+          fontSize: '0.9rem', transition: 'border-color 0.2s', boxSizing: 'border-box',
+        }}
+        onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)')}
+        onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
+      />
+    </div>
+  );
+};
 
 const FormSelect = ({ label, options, value, onChange }: {
   label: string; options: string[]; value: string;
