@@ -4,27 +4,7 @@ import { createClient, isAdmin } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import crypto from "crypto";
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-
-async function sendEmail(to: string, subject: string, html: string) {
-    if (!RESEND_API_KEY) {
-        console.warn("RESEND_API_KEY not set. Skipping email to:", to);
-        return;
-    }
-
-    try {
-        const { Resend } = await import("resend");
-        const resend = new Resend(RESEND_API_KEY);
-        await resend.emails.send({
-            from: "Portfolio Access System <onboarding@resend.dev>",
-            to,
-            subject,
-            html,
-        });
-    } catch (err) {
-        console.error("Failed to send email:", err);
-    }
-}
+import { sendMail } from "@/lib/mailer";
 
 export async function approveAndGenerateLink(requestId: string) {
     const supabase = (await createClient()) as any;
@@ -95,10 +75,10 @@ export async function approveAndGenerateLink(requestId: string) {
         const magicLink = `${siteUrl}/${requestData.creator_username}/vault?token=${secureToken}`;
 
         // Email the VIP client
-        await sendEmail(
-            requestData.client_email,
-            `✨ Access Granted: Exclusive Portfolio`,
-            `
+        await sendMail({
+            to: requestData.client_email,
+            subject: `✨ Access Granted: Exclusive Portfolio`,
+            html: `
             <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #e8e8e8; border-radius: 16px; overflow: hidden;">
                 <div style="padding: 48px 40px; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);">
                     <h1 style="font-size: 28px; font-weight: 300; letter-spacing: 0.05em; margin: 0 0 8px; color: #c9a86c;">You're In</h1>
@@ -124,7 +104,7 @@ export async function approveAndGenerateLink(requestId: string) {
                 </div>
             </div>
             `
-        );
+        });
     }
 
     // 5. Revalidate dashboards
@@ -194,10 +174,10 @@ export async function regenerateLink(requestId: string) {
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
         const magicLink = `${siteUrl}/${requestData.creator_username}/vault?token=${secureToken}`;
 
-        await sendEmail(
-            requestData.client_email,
-            `🔄 Fresh Access Link: Exclusive Portfolio`,
-            `
+        await sendMail({
+            to: requestData.client_email,
+            subject: `🔄 Fresh Access Link: Exclusive Portfolio`,
+            html: `
             <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #e8e8e8; border-radius: 16px; overflow: hidden;">
                 <div style="padding: 48px 40px; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);">
                     <h1 style="font-size: 28px; font-weight: 300; letter-spacing: 0.05em; margin: 0 0 8px; color: #c9a86c;">New Access Link</h1>
@@ -223,7 +203,7 @@ export async function regenerateLink(requestId: string) {
                 </div>
             </div>
             `
-        );
+        });
     }
 
     revalidatePath("/admin/access-requests");
