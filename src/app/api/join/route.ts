@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       ['Commitment', data.commitment],
       ['Preferred Contact', data.contactMethod],
       ['Preferred Start Date', data.startDate],
-      ['Why Us', data.whyUs],
+      ['Why You', data.whyUs],
       ['Unique Factor', data.uniqueFactor],
     ]
       .filter(([, val]) => val)
