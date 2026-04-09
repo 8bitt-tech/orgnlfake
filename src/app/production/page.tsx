@@ -33,13 +33,14 @@ export default function ProductionPage() {
                 style={{
                     maxWidth: "1000px",
                     margin: "120px auto 0",
-                    padding: "100px 40px",
+                    padding: "120px 40px",
                     textAlign: "center",
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/Creators Portfolios/@they_adore_tshego/Fashion Editorial/_MG_0085.jpg')`,
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Creators Portfolios/@they_adore_tshego/Fashion Editorial/_MG_0085.jpg')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '24px',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(0, 255, 128, 0.2)',
+                    boxShadow: '0 0 60px -15px rgba(0, 255, 128, 0.3), inset 0 0 40px rgba(0, 255, 128, 0.15)',
                     position: 'relative',
                     overflow: 'hidden'
                 }}
