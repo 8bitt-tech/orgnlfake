@@ -32,15 +32,15 @@ export default function ProductionPage() {
                 transition={{ duration: 0.9, ease: "easeOut" }}
                 style={{
                     maxWidth: "1000px",
-                    margin: "120px auto 0",
-                    padding: "120px 40px",
+                    margin: "150px auto 100px",
+                    padding: "140px 40px",
                     textAlign: "center",
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Creators Portfolios/@they_adore_tshego/Fashion Editorial/_MG_0085.jpg')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '24px',
-                    border: '1px solid rgba(0, 255, 128, 0.2)',
-                    boxShadow: '0 0 60px -15px rgba(0, 255, 128, 0.3), inset 0 0 40px rgba(0, 255, 128, 0.15)',
+                    border: '1px solid rgba(0, 255, 128, 0.15)',
+                    boxShadow: '0 0 200px -60px rgba(0, 255, 128, 0.25), 0 0 80px -20px rgba(0, 255, 128, 0.15), inset 0 0 80px rgba(0, 255, 128, 0.1)',
                     position: 'relative',
                     overflow: 'hidden'
                 }}
