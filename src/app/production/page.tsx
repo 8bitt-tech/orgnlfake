@@ -31,11 +31,17 @@ export default function ProductionPage() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.9, ease: "easeOut" }}
                 style={{
-                    maxWidth: "820px",
-                    margin: "100px auto 0",
-                    padding: "60px 30px",
-                    borderTop: "1px solid #1a1a1a",
+                    maxWidth: "1000px",
+                    margin: "120px auto 0",
+                    padding: "100px 40px",
                     textAlign: "center",
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/Creators Portfolios/@they_adore_tshego/Fashion Editorial/_MG_0085.jpg')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '24px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    position: 'relative',
+                    overflow: 'hidden'
                 }}
             >
                 <motion.span
