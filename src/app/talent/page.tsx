@@ -29,7 +29,7 @@ export default async function TalentPage() {
     let creatorsData = creators;
     let isMockData = false;
 
-    if (error) {
+    if (error || !creators || creators.length === 0) {
         console.warn("Error fetching creators, falling back to mock data:", error);
         isMockData = true;
         creatorsData = [
@@ -246,6 +246,22 @@ export default async function TalentPage() {
                     Many of the faces you see here began their journey with us as beginners. Today, they stand as independent business partners. This isn't just a list of names; it's a directory of empowered partners ready to bring your brand to life with authenticity and data-driven precision.
                 </p>
             </div>
+            {/* Collaborate Section moved from Home */}
+            <section id="contact" className="mt-20 pt-20 border-t border-[#1a1a1a]">
+                <div className="contact-wrapper" style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
+                <h2 className="section-title" style={{ fontFamily: "var(--font-heading)", fontSize: "3rem", marginBottom: "10px" }}>Collaborate</h2>
+                <p style={{ marginBottom: "40px", color: "var(--text-muted)" }}>Available for bookings worldwide.</p>
+                <form>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px", marginBottom: "15px" }}>
+                    <input type="text" placeholder="Name" style={{ width: "100%", background: "#111", border: "1px solid #222", padding: "20px", color: "white" }} />
+                    <input type="email" placeholder="Email" style={{ width: "100%", background: "#111", border: "1px solid #222", padding: "20px", color: "white" }} />
+                    </div>
+                    <input type="text" placeholder="Subject / Category" style={{ width: "100%", background: "#111", border: "1px solid #222", padding: "20px", color: "white", marginBottom: "15px" }} />
+                    <textarea rows={6} placeholder="Tell us about your vision..." style={{ width: "100%", background: "#111", border: "1px solid #222", padding: "20px", color: "white", marginBottom: "15px" }}></textarea>
+                    <button type="button" style={{ background: "white", color: "black", border: "none", padding: "20px 50px", textTransform: "uppercase", fontWeight: 700, letterSpacing: "2px", cursor: "pointer", width: "100%" }}>Send Request</button>
+                </form>
+                </div>
+            </section>
         </div>
     );
 }

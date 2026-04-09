@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-// This will be provided when running the script
-const SUPABASE_SERVICE_ROLE_KEY = process.argv[2];
+// This will be provided via environment variable
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.argv[2];
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
     console.error("Usage: npx tsx scripts/create-admins.ts <SUPABASE_SERVICE_ROLE_KEY>");
@@ -18,7 +18,7 @@ const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 
 const adminsToCreate = [
     { email: 'lesegolmodisakgosi@gmail.com', password: '4321indigoOFA' },
-    { email: 'orgnfakecreators@gmail.com', password: '2425ekafOFA' }
+    { email: 'orgnfakecreators@gmail.com', password: '4321indigoOFA' }
 ];
 
 async function createAdmins() {
@@ -35,11 +35,35 @@ async function createAdmins() {
         });
 
         if (authError) {
-            console.error(`❌ Failed to create auth user for ${admin.email}:`, authError.message);
-            continue;
+            if (authError.message === 'User already registered') {
+                console.log(`ℹ️ User ${admin.email} already exists, updating password...`);
+                
+                // Get user ID first
+                const { data: userData, error: listError } = await supabaseAdmin.auth.admin.listUsers();
+                const existingUser = userData?.users.find(u => u.email === admin.email);
+                
+                if (existingUser) {
+                    const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(
+                        existingUser.id,
+                        { password: admin.password }
+                    );
+                    
+                    if (updateError) {
+                        console.error(`❌ Failed to update password for ${admin.email}:`, updateError.message);
+                        continue;
+                    }
+                    console.log(`✅ Updated password for ${admin.email}`);
+                } else {
+                    console.error(`❌ Could not find user ${admin.email} to update.`);
+                    continue;
+                }
+            } else {
+                console.error(`❌ Failed to create auth user for ${admin.email}:`, authError.message);
+                continue;
+            }
+        } else {
+            console.log(`✅ Created auth user: ${authData.user.id}`);
         }
-
-        console.log(`✅ Created auth user: ${authData.user.id}`);
 
         // 2. Add to public.admins table to grant admin privileges
         const { error: adminError } = await supabaseAdmin

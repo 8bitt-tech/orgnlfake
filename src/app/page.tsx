@@ -7,6 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import PhotonScrollEffect from "@/components/PhotonScrollEffect";
 import FeaturedInfluencersWidget from "@/components/FeaturedInfluencersWidget";
+import CircularVideoSpinner from "@/components/CircularVideoSpinner";
 import "./landing.css";
 
 const animationImages = [
@@ -23,6 +24,38 @@ const animationImages = [
   '/landing/ANIMATION/orgnlfake__1756828805_3712408242753148550_4183375751.webp',
   '/landing/ANIMATION/yfytf.jpg'
 ];
+
+function SpotlightButton({ href, children }: { href: string; children: React.ReactNode }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <Link 
+      href={href}
+      className="btn-spotlight"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setOpacity(1)}
+      onMouseLeave={() => setOpacity(0)}
+    >
+      <div 
+        className="spotlight-beam" 
+        style={{
+           opacity,
+           background: `radial-gradient(circle at ${position.x}px ${position.y}px, rgba(255,100,60,0.3) 0%, rgba(255,69,0,0.15) 20%, rgba(0,0,0,0.0) 55%)`
+        }} 
+      />
+      <span style={{ position: 'relative', pointerEvents: 'none', zIndex: 2 }}>{children}</span>
+    </Link>
+  );
+}
 
 export default function Home() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -148,16 +181,31 @@ export default function Home() {
         </motion.p>
       </section>
 
+      {/* --- CIRCULAR VIDEO SPINNER --- */}
+      <CircularVideoSpinner />
+
       <section id="about" className="reveal no-reveal" ref={addToRefs}>
-        <div className="about-img" style={{ position: 'relative', overflow: 'hidden' }}>
-          <Image 
-            src="/landing/orgnlfake__1582784388_2252881193439860909_4183375751.jpg" 
-            alt="Model Profile" 
-            width={800}
-            height={1000}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-          />
+        <video 
+          className="about-bg-video"
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="/media/videos/Motion Pictures/Landing/0407(3).mp4" type="video/mp4" />
+        </video>
+
+        <div className="about-img" style={{ position: 'relative', overflow: 'hidden', height: '100%', minHeight: '600px', borderRadius: '24px', boxShadow: '0 0 60px 10px rgba(255, 69, 0, 0.5), 0 0 20px 2px rgba(255, 80, 0, 0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.35)', zIndex: -1 }}
+          >
+            <source src="/media/videos/Motion Pictures/Landing/0407(6).mp4" type="video/mp4" />
+          </video>
+          <SpotlightButton href="/portfolio">View Portfolio</SpotlightButton>
         </div>
         <motion.div
           className="about-text"
@@ -229,21 +277,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact">
-        <div className="contact-wrapper reveal" ref={addToRefs}>
-          <h2 className="section-title">Collaborate</h2>
-          <p style={{ marginBottom: "40px", color: "var(--text-muted)" }}>Available for bookings worldwide.</p>
-          <form>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px" }}>
-              <input type="text" placeholder="Name" className="landing-input" />
-              <input type="email" placeholder="Email" className="landing-input" />
-            </div>
-            <input type="text" placeholder="Subject / Category" className="landing-input" />
-            <textarea rows={6} placeholder="Tell us about your vision..." className="landing-textarea"></textarea>
-            <button type="button" className="send-btn">Send Request</button>
-          </form>
-        </div>
-      </section>
     </div>
     </>
   );

@@ -12,7 +12,6 @@ const navItems = [
     { label: "Production", href: "/production" },
     { label: "Services", href: "/services" },
     { label: "Content Creators", href: "/talent" },
-    { label: "Join Us", href: "/join" },
     { label: "Contact", href: "/contact" },
 ];
 
@@ -61,7 +60,7 @@ export function MainNav() {
                                 Sign In
                             </Link>
                             <Link href="/join" className="px-4 py-2 text-sm font-medium text-black bg-white hover:bg-white/90 rounded-full transition-colors">
-                                Sign Up
+                                Join Us
                             </Link>
                         </div>
                     </div>
@@ -85,7 +84,7 @@ export function MainNav() {
                                     Sign In
                                 </Link>
                                 <Link href="/join" onClick={() => setMobileMenuOpen(false)} className="flex-1 py-3 text-center rounded-xl font-medium text-black bg-white hover:bg-white/90 transition-colors">
-                                    Sign Up
+                                    Join Us
                                 </Link>
                             </div>
                             

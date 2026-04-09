@@ -58,7 +58,7 @@ export default function FeaturedInfluencersWidget() {
           .limit(4);
         
         if (error) {
-          console.error("Supabase fetch error:", error);
+          console.warn("Supabase fetch info: using mock data fallback");
           setHasSupabaseError(true);
         } else if (data && data.length > 0) {
           setDisplayCreators(data);
