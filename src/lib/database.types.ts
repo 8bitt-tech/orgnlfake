@@ -210,6 +210,7 @@ export interface Database {
                     image_url: string | null;
                     testimonial_text: string;
                     rating: number;
+                    status: string;
                 };
                 Insert: {
                     model_name: string;
@@ -217,6 +218,7 @@ export interface Database {
                     image_url?: string | null;
                     testimonial_text: string;
                     rating?: number;
+                    status?: string;
                 };
                 Update: {
                     model_name?: string;
@@ -224,6 +226,7 @@ export interface Database {
                     image_url?: string | null;
                     testimonial_text?: string;
                     rating?: number;
+                    status?: string;
                 };
             };
         };
