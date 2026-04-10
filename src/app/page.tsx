@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import PhotonScrollEffect from "@/components/PhotonScrollEffect";
 import FeaturedInfluencersWidget from "@/components/FeaturedInfluencersWidget";
 import CircularVideoSpinner from "@/components/CircularVideoSpinner";
+import Testimonials from "@/components/Testimonials";
 import "./landing.css";
 
 const animationImages = [
@@ -276,6 +277,9 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
 
     </div>
     </>
