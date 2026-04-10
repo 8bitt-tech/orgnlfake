@@ -48,6 +48,7 @@ export default function CircularVideoSpinner() {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   const animState = useRef({
     currentSpinnerRot: 0,
@@ -60,6 +61,7 @@ export default function CircularVideoSpinner() {
   useEffect(() => {
     const handleResize = () => {
       setDimensions({ width: window.innerWidth, height: window.innerHeight });
+      setIsMobile(window.innerWidth < 768);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -138,24 +140,29 @@ export default function CircularVideoSpinner() {
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden text-white" style={{ background: '#0a0a0a' }}>
 
-      {/* --- ALL BACKGROUND VIDEOS PRELOADED (toggle opacity, zero black flash) --- */}
+      {/* --- BACKGROUND VIDEOS --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {WIDGETS.map((widget, i) => (
-          <video
-            key={`bg-${widget.id}`}
-            src={widget.videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: i === activeIndex ? 0.6 : 0,
-              transition: 'opacity 0.5s ease',
-            }}
-          />
-        ))}
+        {WIDGETS.map((widget, i) => {
+          // On mobile, only mount the active video to save hundreds of megabytes
+          if (isMobile && i !== activeIndex && i !== ((activeIndex - 1 + WIDGETS.length) % WIDGETS.length) && i !== ((activeIndex + 1) % WIDGETS.length)) return null;
+
+          return (
+            <video
+              key={`bg-${widget.id}`}
+              src={widget.videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload={isMobile && i !== activeIndex ? "none" : "auto"}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                opacity: i === activeIndex ? 0.6 : 0,
+                transition: 'opacity 0.5s ease',
+              }}
+            />
+          );
+        })}
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
@@ -182,8 +189,9 @@ export default function CircularVideoSpinner() {
         </defs>
       </svg>
 
-      {/* --- THE SPINNER WHEEL --- */}
-      <div className="absolute inset-0 z-10 origin-center pointer-events-none" ref={spinnerRef}>
+      {/* --- THE SPINNER WHEEL (Desktop Only) --- */}
+      {!isMobile && (
+        <div className="absolute inset-0 z-10 origin-center pointer-events-none" ref={spinnerRef}>
         {WIDGETS.map((widget, i) => {
           const startAngle = i * anglePerSegment;
           const endAngle = (i + 1) * anglePerSegment;
@@ -221,6 +229,7 @@ export default function CircularVideoSpinner() {
           );
         })}
       </div>
+      )}
 
       {/* --- INDICATOR LINE --- */}
       <svg className="absolute inset-0 z-30 pointer-events-none" style={{ width: '100%', height: '100%' }}>
