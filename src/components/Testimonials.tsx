@@ -97,7 +97,7 @@ function ReviewModal({ onClose, onSubmitted }: { onClose: () => void; onSubmitte
 
       if (!supabaseUrl || !supabaseKey) throw new Error("Not configured");
 
-      const supabase = createClient<Database>(supabaseUrl, supabaseKey);
+      const supabase = createClient(supabaseUrl, supabaseKey);
 
       const { error: insertError } = await supabase
         .from("testimonials")
@@ -106,7 +106,7 @@ function ReviewModal({ onClose, onSubmitted }: { onClose: () => void; onSubmitte
           social_handle: handle.trim() || "@anonymous",
           testimonial_text: text.trim(),
           rating,
-        });
+        } as Record<string, unknown>);
 
       if (insertError) throw insertError;
 
