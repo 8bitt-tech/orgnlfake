@@ -201,6 +201,31 @@ export interface Database {
                 Insert: AccessTokenInsert;
                 Update: AccessTokenUpdate;
             };
+            testimonials: {
+                Row: {
+                    id: string;
+                    created_at: string;
+                    model_name: string;
+                    social_handle: string;
+                    image_url: string | null;
+                    testimonial_text: string;
+                    rating: number;
+                };
+                Insert: {
+                    model_name: string;
+                    social_handle: string;
+                    image_url?: string | null;
+                    testimonial_text: string;
+                    rating?: number;
+                };
+                Update: {
+                    model_name?: string;
+                    social_handle?: string;
+                    image_url?: string | null;
+                    testimonial_text?: string;
+                    rating?: number;
+                };
+            };
         };
         Functions: {
             is_admin: {

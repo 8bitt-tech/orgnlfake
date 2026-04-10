@@ -1,40 +1,39 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { createClient } from "@supabase/supabase-js";
+import { Database } from "@/lib/database.types";
 
-interface Testimonial {
-  id: string;
-  modelName: string;
-  socialHandle: string;
-  imageUrl?: string;
-  testimonialText: string;
-  rating: number;
-}
+type Testimonial = Database['public']['Tables']['testimonials']['Row'];
 
-// Fallback data if Firebase is empty or not yet configured
+// Fallback data if Supabase fetch is empty or fails
 const fallbackTestimonials: Testimonial[] = [
   {
     id: "1",
-    modelName: "Sarah Kim",
-    socialHandle: "@sarahk_official",
-    testimonialText: "The orbital experience exceeded every expectation. Seeing Earth from space is truly life-changing. The crew was professional, the training was thorough, and every moment was unforgettable.",
+    model_name: "Sarah Kim",
+    social_handle: "@sarahk_official",
+    testimonial_text: "The orbital experience exceeded every expectation. Seeing Earth from space is truly life-changing. The crew was professional, the training was thorough, and every moment was unforgettable.",
     rating: 5,
+    created_at: new Date().toISOString(),
+    image_url: null,
   },
   {
     id: "2",
-    modelName: "Marcus Johnson",
-    socialHandle: "@marcus_j",
-    testimonialText: "Our lunar mission was absolutely spectacular. The accommodations were luxurious, the views were breathtaking, and the entire experience felt safe and well-organized. Worth every penny.",
+    model_name: "Marcus Johnson",
+    social_handle: "@marcus_j",
+    testimonial_text: "Our lunar mission was absolutely spectacular. The accommodations were luxurious, the views were breathtaking, and the entire experience felt safe and well-organized. Worth every penny.",
     rating: 5,
+    created_at: new Date().toISOString(),
+    image_url: null,
   },
   {
     id: "3",
-    modelName: "Elena Petrov",
-    socialHandle: "@elena_pt",
-    testimonialText: "An experience that redefined what's possible. The training prepared us perfectly, and the crew's expertise made us feel secure throughout. I'll cherish these memories forever.",
+    model_name: "Elena Petrov",
+    social_handle: "@elena_pt",
+    testimonial_text: "An experience that redefined what's possible. The training prepared us perfectly, and the crew's expertise made us feel secure throughout. I'll cherish these memories forever.",
     rating: 5,
+    created_at: new Date().toISOString(),
+    image_url: null,
   }
 ];
 
@@ -45,25 +44,25 @@ export default function Testimonials() {
   useEffect(() => {
     async function fetchTestimonials() {
       try {
-        // Only attempt fetch if Firebase project ID is clearly present
-        if (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
-          const testimonialsRef = collection(db, "testimonials");
-          // Optionally order by creation date if you add a timestamp field: query(testimonialsRef, orderBy('createdAt', 'desc'))
-          const q = query(testimonialsRef);
-          const snapshot = await getDocs(q);
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        
+        if (supabaseUrl && supabaseKey && supabaseUrl !== 'your-project-url') {
+          const supabase = createClient<Database>(supabaseUrl, supabaseKey);
           
-          if (!snapshot.empty) {
-            const data = snapshot.docs.map(doc => ({
-              id: doc.id,
-              ...doc.data()
-            })) as Testimonial[];
+          const { data, error } = await supabase
+            .from('testimonials')
+            .select('*')
+            .order('created_at', { ascending: false });
+            
+          if (!error && data && data.length > 0) {
             setTestimonials(data);
             setLoading(false);
             return;
           }
         }
       } catch (error) {
-        console.error("Error fetching testimonials from Firebase:", error);
+        console.error("Error fetching testimonials from Supabase:", error);
       }
       
       // Fallback
@@ -111,26 +110,26 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <p className="text-white/80 text-sm leading-relaxed mb-6 font-sans">
-                  &quot;{testimonial.testimonialText}&quot;
+                  &quot;{testimonial.testimonial_text}&quot;
                 </p>
                 <div className="flex flex-col items-center justify-center gap-3 mt-auto">
-                  {testimonial.imageUrl ? (
+                  {testimonial.image_url ? (
                     <img 
-                      src={testimonial.imageUrl} 
-                      alt={testimonial.modelName} 
+                      src={testimonial.image_url} 
+                      alt={testimonial.model_name} 
                       className="w-12 h-12 rounded-full object-cover border border-white/10"
                     />
                   ) : (
                     <div className="w-12 h-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center">
-                      <span className="text-sm font-medium text-white font-sans">{getInitials(testimonial.modelName)}</span>
+                      <span className="text-sm font-medium text-white font-sans">{getInitials(testimonial.model_name)}</span>
                     </div>
                   )}
                   <div>
                     <div className="text-sm font-medium text-white font-sans">
-                      {testimonial.modelName}
+                      {testimonial.model_name}
                     </div>
                     <div className="text-xs text-white/60 font-sans mt-0.5">
-                      {testimonial.socialHandle}
+                      {testimonial.social_handle}
                     </div>
                   </div>
                 </div>
