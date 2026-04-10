@@ -3,16 +3,16 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const WIDGETS = [
-  { id: 1, name: "Studio Session", videoSrc: "/media/videos/0304(2).mp4" },
-  { id: 2, name: "Editorial", videoSrc: "/media/videos/0304(5).mp4" },
-  { id: 3, name: "TV Commercial", videoSrc: "/media/videos/0305.mp4" },
-  { id: 4, name: "Runway", videoSrc: "/media/videos/Motion Pictures/Landing/0407(19).mp4" },
-  { id: 5, name: "Behind The Scenes", videoSrc: "/media/videos/Motion Pictures/Production/0407(1).mp4" },
-  { id: 6, name: "Portfolio", videoSrc: "/media/videos/Motion Pictures/Portfolio Motion/0407(17).mp4" },
-  { id: 7, name: "Interviews", videoSrc: "/media/videos/Motion Pictures/mix/0409 (1).mp4" },
-  { id: 8, name: "Catwalk", videoSrc: "/media/videos/Motion Pictures/mix/MVI_1589.MOV" },
-  { id: 9, name: "Vlogs", videoSrc: "/media/videos/Motion Pictures/mix/3863627567052154606.mp4" },
-  { id: 10, name: "Lifestyle", videoSrc: "/media/videos/Motion Pictures/mix/WhatsApp Video 2026-03-12 at 16.33.18.mp4" },
+  { id: 1, name: "Studio Session", videoSrc: "/media/videos/0410(10).mp4" },
+  { id: 2, name: "Editorial", videoSrc: "/media/videos/0410(11).mp4" },
+  { id: 3, name: "TV Commercial", videoSrc: "/media/videos/Motion Pictures/mix/0410(2).mp4" },
+  { id: 4, name: "Runway", videoSrc: "/media/videos/Motion Pictures/Landing/0410(7).mp4" },
+  { id: 5, name: "Behind The Scenes", videoSrc: "/media/videos/Motion Pictures/Production/0410(8).mp4" },
+  { id: 6, name: "Portfolio", videoSrc: "/media/videos/Motion Pictures/Portfolio Motion/0410(4).mp4" },
+  { id: 7, name: "Interviews", videoSrc: "/media/videos/Motion Pictures/mix/0410(3).mp4" },
+  { id: 8, name: "Catwalk", videoSrc: "/media/videos/Motion Pictures/mix/0410(1).mp4" },
+  { id: 9, name: "Vlogs", videoSrc: "/media/videos/Motion Pictures/mix/0410.mp4" },
+  { id: 10, name: "Lifestyle", videoSrc: "/media/videos/rose.mp4" },
 ];
 
 const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
