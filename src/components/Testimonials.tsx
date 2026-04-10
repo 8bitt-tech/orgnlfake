@@ -16,6 +16,7 @@ const fallbackTestimonials: Testimonial[] = [
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
+    status: "approved",
   },
   {
     id: "2",
@@ -25,6 +26,7 @@ const fallbackTestimonials: Testimonial[] = [
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
+    status: "approved",
   },
   {
     id: "3",
@@ -34,6 +36,7 @@ const fallbackTestimonials: Testimonial[] = [
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
+    status: "approved",
   }
 ];
 
