@@ -31,14 +31,20 @@ const animationImages = [
 
 
 function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
+    setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       setCursorPos({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  if (!mounted) return null;
+
   return (
     <div
       className="landing-cursor"
@@ -90,100 +96,119 @@ export default function Home() {
           }
         }}
       />
-      <div className="landing-body">
+      <div className="landing-body" style={{ cursor: 'none' }}>
         <CustomCursor />
 
-        <section id="home" className="banner">
-          <div className="absolute w-full h-[120vh] left-0 -top-[10vh]" style={{ transform: 'translateZ(0px)', mixBlendMode: 'screen' }} data-us-project="aH0ZsntZ1TcKHIyweEA8"></div>
-          <div className="slider" style={{ "--quantity": animationImages.length } as any}>
-          {animationImages.map((img, index) => (
-            <div key={index} className="item" style={{ "--position": index + 1 } as any}>
-              <Image 
-                src={img} 
-                alt="Orgnlfake Model" 
-                fill 
-                sizes="(max-width: 768px) 50vw, 25vw"
-                style={{ objectFit: 'cover' }}
-                priority={index < 4} 
-              />
-            </div>
-          ))}
+        <div id="section-home">
+          <section id="home" className="banner">
+            <div className="absolute w-full h-[120vh] left-0 -top-[10vh]" style={{ transform: 'translateZ(0px)', mixBlendMode: 'screen' }} data-us-project="aH0ZsntZ1TcKHIyweEA8"></div>
+            <div className="slider" style={{ "--quantity": animationImages.length } as any}>
+            {animationImages.map((img, index) => (
+              <div key={index} className="item" style={{ "--position": index + 1 } as any}>
+                <Image 
+                  src={img} 
+                  alt="Orgnlfake Model" 
+                  fill 
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
+                  priority={index < 4} 
+                />
+              </div>
+            ))}
+          </div>
+          </section>
         </div>
-        </section>
 
-        <div className="hero-content reveal" ref={addToRefs}>
-          <div className="hero-subtitle">High Fashion & Creative Arts</div>
-          <h1 className="hero-title">Unfiltered<br />Reality</h1>
-          
-          <Link href="/join" className="join-btn inline-flex transition overflow-hidden group text-sm font-medium text-white rounded-full pt-3 pr-5 pb-3 pl-5 relative gap-x-2 gap-y-2 items-center mx-auto mt-4">
-            <div className="loader" style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex: 1, backgroundColor: 'transparent', mask: 'repeating-linear-gradient(90deg, transparent 0, transparent 6px, black 7px, black 8px)', WebkitMask: 'repeating-linear-gradient(90deg, transparent 0, transparent 6px, black 7px, black 8px)' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'radial-gradient(circle at 50% 50%, #f43f5e 0%, transparent 50%), radial-gradient(circle at 45% 45%, #ef4444 0%, transparent 45%), radial-gradient(circle at 55% 55%, #fb7185 0%, transparent 45%), radial-gradient(circle at 45% 55%, #f87171 0%, transparent 45%), radial-gradient(circle at 55% 45%, #dc2626 0%, transparent 45%)', mask: 'radial-gradient(circle at 50% 50%, transparent 0%, transparent 10%, black 25%)', WebkitMask: 'radial-gradient(circle at 50% 50%, transparent 0%, transparent 10%, black 25%)', animation: 'transform-animation 0.833s infinite alternate, opacity-animation 1.666s infinite', animationTimingFunction: 'cubic-bezier(0.6, 0.8, 0.5, 1)', filter: 'drop-shadow(0 0 8px rgba(244, 63, 94, 0.6))' }}></div>
-            </div>
+        <div id="section-hero">
+          <div className="hero-content reveal" ref={addToRefs}>
+            <div className="hero-subtitle">High Fashion & Creative Arts</div>
+            <h1 className="hero-title">Unfiltered<br />Reality</h1>
             
-            <span style={{ position: 'relative', zIndex: 2, fontFamily: "'Inter', sans-serif", fontSize: '1em', fontWeight: 600, userSelect: 'none', color: '#fff', display: 'flex', gap: '0.5rem' }}>
-              <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.04s' }}>J</span>
-              <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.08s' }}>o</span>
-              <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.13s' }}>i</span>
-              <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.17s' }}>n</span>
-              <span style={{ display: 'inline-block', width: '0.3rem' }}></span>
-              <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.26s' }}>U</span>
-              <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.3s' }}>s</span>
-            </span>
-          </Link>
+            <Link href="/join" className="join-btn inline-flex transition overflow-hidden group text-sm font-medium text-white rounded-full pt-3 pr-5 pb-3 pl-5 relative gap-x-2 gap-y-2 items-center mx-auto mt-4">
+              <div className="loader" style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex: 1, backgroundColor: 'transparent', mask: 'repeating-linear-gradient(90deg, transparent 0, transparent 6px, black 7px, black 8px)', WebkitMask: 'repeating-linear-gradient(90deg, transparent 0, transparent 6px, black 7px, black 8px)' }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'radial-gradient(circle at 50% 50%, #f43f5e 0%, transparent 50%), radial-gradient(circle at 45% 45%, #ef4444 0%, transparent 45%), radial-gradient(circle at 55% 55%, #fb7185 0%, transparent 45%), radial-gradient(circle at 45% 55%, #f87171 0%, transparent 45%), radial-gradient(circle at 55% 45%, #dc2626 0%, transparent 45%)', mask: 'radial-gradient(circle at 50% 50%, transparent 0%, transparent 10%, black 25%)', WebkitMask: 'radial-gradient(circle at 50% 50%, transparent 0%, transparent 10%, black 25%)', animation: 'transform-animation 0.833s infinite alternate, opacity-animation 1.666s infinite', animationTimingFunction: 'cubic-bezier(0.6, 0.8, 0.5, 1)', filter: 'drop-shadow(0 0 8px rgba(244, 63, 94, 0.6))' }}></div>
+              </div>
+              
+              <span style={{ position: 'relative', zIndex: 2, fontFamily: "'Inter', sans-serif", fontSize: '1em', fontWeight: 600, userSelect: 'none', color: '#fff', display: 'flex', gap: '0.5rem' }}>
+                <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.04s' }}>J</span>
+                <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.08s' }}>o</span>
+                <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.13s' }}>i</span>
+                <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.17s' }}>n</span>
+                <span style={{ display: 'inline-block', width: '0.3rem' }}></span>
+                <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.26s' }}>U</span>
+                <span className="loader-letter" style={{ display: 'inline-block', opacity: 0, animation: 'loader-letter-anim 1.666s infinite linear', animationDelay: '0.3s' }}>s</span>
+              </span>
+            </Link>
+          </div>
         </div>
       
-      <section className="banner-paragraph reveal no-reveal" ref={addToRefs}>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          In an industry often defined by rigid expectations and artificial standards, <strong>Orgnlfake</strong> was born to serve as a sanctuary for the authentic. Based in the vibrant creative landscape of South Africa, we are more than an agency; we are a <strong>Pro-Choice Collective</strong>. We believe that every individual has the right to navigate their career without surrendering their autonomy. To us, &apos;Original&apos; isn&apos;t just a name—it&apos;s a commitment to the unfiltered, culturally diverse, and beautifully complex reality of Mzansi.
-        </motion.p>
-      </section>
-
-      {/* --- INFLUENCER WIDGET OVERLAY --- */}
-      <FeaturedInfluencersWidget />
-
-      {/* Photon Scroll Animation Section */}
-      <PhotonScrollEffect />
-
-      <section className="manifesto-paragraph reveal no-reveal" ref={addToRefs}>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          We stand firmly against the &apos;fake&apos; hierarchies of the past. Here, there are no bosses and no subordinates. We operate as a horizontal partnership, where the vision of the brand and the soul of the creator meet as equals. We are a house built on the belief that your personal life, your choices, and your private journey are yours alone; they do not define your talent, but they do fuel your unique creative fire.
-        </motion.p>
-      </section>
-
-      {/* --- CIRCULAR VIDEO SPINNER --- */}
-      <CircularVideoSpinner />
-
-      <AboutSection />
-
-      <section id="portfolio-link" className="reveal no-reveal" ref={addToRefs}>
-        <div className="flex flex-col items-center justify-center py-24 px-4 text-center border-t border-b border-[#222] my-12 bg-[#0a0a0a]">
-          <h2 className="section-title mb-6">The Collection</h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-2xl">
-            Explore our curated portfolio of High Fashion, Boudoir, Active Wear, and Creative Portraits shot by our agency.
-          </p>
-          <a
-            href="/production"
-            className="inline-block border border-white/30 px-10 py-4 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300"
-          >
-            View Production Portfolio
-          </a>
+        <div id="section-banner-para">
+          <section className="banner-paragraph reveal no-reveal" ref={addToRefs}>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              In an industry often defined by rigid expectations and artificial standards, <strong>Orgnlfake</strong> was born to serve as a sanctuary for the authentic. Based in the vibrant creative landscape of South Africa, we are more than an agency; we are a <strong>Pro-Choice Collective</strong>. We believe that every individual has the right to navigate their career without surrendering their autonomy. To us, &apos;Original&apos; isn&apos;t just a name—it&apos;s a commitment to the unfiltered, culturally diverse, and beautifully complex reality of Mzansi.
+            </motion.p>
+          </section>
         </div>
-      </section>
 
-      {/* Testimonials */}
-      <Testimonials />
+        {/* --- INFLUENCER WIDGET OVERLAY --- */}
+        <div id="island-influencers">
+          <FeaturedInfluencersWidget />
+        </div>
 
-    </div>
+        {/* Photon Scroll Animation Section */}
+        <div id="island-photon">
+          <PhotonScrollEffect />
+        </div>
+
+        <div id="section-manifesto">
+          <section className="manifesto-paragraph reveal no-reveal" ref={addToRefs}>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              We stand firmly against the &apos;fake&apos; hierarchies of the past. Here, there are no bosses and no subordinates. We operate as a horizontal partnership, where the vision of the brand and the soul of the creator meet as equals. We are a house built on the belief that your personal life, your choices, and your private journey are yours alone; they do not define your talent, but they do fuel your unique creative fire.
+            </motion.p>
+          </section>
+        </div>
+
+        {/* --- CIRCULAR VIDEO SPINNER --- */}
+        <div id="island-spinner">
+          <CircularVideoSpinner />
+        </div>
+
+        <div id="island-about">
+          <AboutSection />
+        </div>
+
+        <div id="section-portfolio">
+          <section id="portfolio-link" className="reveal no-reveal" ref={addToRefs}>
+            <div className="flex flex-col items-center justify-center py-24 px-4 text-center border-t border-b border-[#222] my-12 bg-[#0a0a0a]">
+              <h2 className="section-title mb-6">The Collection</h2>
+              <p className="text-muted-foreground text-lg mb-10 max-w-2xl">
+                Explore our curated portfolio of High Fashion, Boudoir, Active Wear, and Creative Portraits shot by our agency.
+              </p>
+              <a
+                href="/production"
+                className="inline-block border border-white/30 px-10 py-4 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300"
+              >
+                View Production Portfolio
+              </a>
+            </div>
+          </section>
+        </div>
+
+        {/* Testimonials */}
+        <div id="island-testimonials">
+          <Testimonials />
+        </div>
+      </div>
     </>
   );
 }
