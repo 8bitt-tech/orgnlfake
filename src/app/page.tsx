@@ -21,7 +21,7 @@ const animationImages = [
   '/landing/ANIMATION/_MG_0246.jpg',
   '/landing/ANIMATION/_MG_0574.jpg',
   '/landing/ANIMATION/_MG_0735.jpg',
-  '/landing/ANIMATION/htsyssf.jpg',
+  '/landing/ANIMATION/hdfxfzddzb.gif',
   '/landing/ANIMATION/orgnlfake__1574136420_2180336779075770680_4183375751.jpg',
   '/landing/ANIMATION/orgnlfake__1628225906_2634072276989489657_4183375751.jpg',
   '/landing/ANIMATION/orgnlfake__1737619218_3551684337159388122_4183375751.webp',
