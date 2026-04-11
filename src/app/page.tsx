@@ -57,6 +57,14 @@ export default function Home() {
   const revealRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
+    // Force scroll to top on refresh
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     // Intersection Observer for Reveal Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

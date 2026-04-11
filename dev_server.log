@@ -54,3 +54,4 @@ Import traces:
  GET / 200 in 873ms (compile: 201ms, proxy.ts: 20ms, render: 652ms)
  GET / 200 in 132ms (compile: 9ms, proxy.ts: 8ms, render: 114ms)
  GET / 200 in 303ms (compile: 23ms, proxy.ts: 32ms, render: 248ms)
+✓ Compiled in 2.2s
