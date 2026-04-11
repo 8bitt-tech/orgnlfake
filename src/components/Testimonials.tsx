@@ -12,7 +12,7 @@ const fallbackTestimonials: Testimonial[] = [
     id: "1",
     model_name: "Sarah Kim",
     social_handle: "@sarahk_official",
-    testimonial_text: "The orbital experience exceeded every expectation. Seeing Earth from space is truly life-changing. The crew was professional, the training was thorough, and every moment was unforgettable.",
+    testimonial_text: "OrgnFake has completely transformed my career path. The level of professional support and creative freedom they provide is unmatched in the industry. I've never felt more empowered as a creator.",
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
@@ -22,7 +22,7 @@ const fallbackTestimonials: Testimonial[] = [
     id: "2",
     model_name: "Marcus Johnson",
     social_handle: "@marcus_j",
-    testimonial_text: "Our lunar mission was absolutely spectacular. The accommodations were luxurious, the views were breathtaking, and the entire experience felt safe and well-organized. Worth every penny.",
+    testimonial_text: "Finally an agency that respects the autonomy of the creator. The collaborative process is seamless, and the results speak for themselves. This is the future of talent management.",
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
@@ -32,7 +32,7 @@ const fallbackTestimonials: Testimonial[] = [
     id: "3",
     model_name: "Elena Petrov",
     social_handle: "@elena_pt",
-    testimonial_text: "An experience that redefined what's possible. The training prepared us perfectly, and the crew's expertise made us feel secure throughout. I'll cherish these memories forever.",
+    testimonial_text: "A truly culturally diverse and inclusive space for high fashion and creative arts. OrgnFake doesn't just manage you; they build a vision with you. Highly recommended for any serious talent.",
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
@@ -278,12 +278,12 @@ export default function Testimonials() {
     <>
       <section className="bg-neutral-900/30 w-full min-h-screen flex flex-col items-center justify-center relative py-20">
         <div className="mx-auto max-w-6xl px-6 w-full">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl tracking-tight text-white animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both] font-instrument-serif font-normal">
-              What Our Travelers Say
+          <div className="mx-auto max-w-3xl text-center mb-16 flex flex-col items-center">
+            <h2 className="text-3xl sm:text-4xl tracking-tight text-white animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both] font-instrument-serif font-normal text-center w-full">
+              What Our Creators Say
             </h2>
-            <p className="mt-4 text-white/80 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both] font-sans">
-              Hear from those who&apos;ve experienced the journey of a lifetime
+            <p className="mt-4 text-white/80 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both] font-sans text-center w-full">
+              Hear from the talents who have built their future with us
             </p>
           </div>
 
