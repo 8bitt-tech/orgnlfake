@@ -195,22 +195,7 @@ export default function Home() {
           <AboutSection />
         </div>
 
-        <div id="section-portfolio">
-          <section id="portfolio-link" className="reveal no-reveal" ref={addToRefs}>
-            <div className="flex flex-col items-center justify-center py-24 px-4 text-center border-t border-b border-[#222] my-12 bg-[#0a0a0a]">
-              <h2 className="section-title mb-6">The Collection</h2>
-              <p className="text-muted-foreground text-lg mb-10 max-w-2xl">
-                Explore our curated portfolio of High Fashion, Boudoir, Active Wear, and Creative Portraits shot by our agency.
-              </p>
-              <a
-                href="/production"
-                className="inline-block border border-white/30 px-10 py-4 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300"
-              >
-                View Production Portfolio
-              </a>
-            </div>
-          </section>
-        </div>
+
 
         {/* Testimonials */}
         <div id="island-testimonials">
