@@ -69,7 +69,7 @@ export default function AboutSection() {
             muted 
             playsInline
           >
-            <source src="/media/videos/Motion Pictures/Landing/0410(6).mp4" type="video/mp4" />
+            <source src="/media/videos/Motion%20Pictures/Landing/0410(6).mp4" type="video/mp4" />
           </video>
 
           <div className="about-img" style={{ position: 'relative', overflow: 'hidden', height: '100%', minHeight: '600px', borderRadius: '24px', boxShadow: '0 0 60px 10px rgba(255, 69, 0, 0.5), 0 0 20px 2px rgba(255, 80, 0, 0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -80,7 +80,7 @@ export default function AboutSection() {
               playsInline
               style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.35)', zIndex: -1 }}
             >
-              <source src="/media/videos/Motion Pictures/Landing/0410(5).mp4" type="video/mp4" />
+              <source src="/media/videos/Motion%20Pictures/Landing/0410(5).mp4" type="video/mp4" />
             </video>
             <SpotlightButton href="/portfolio">View Portfolio</SpotlightButton>
           </div>

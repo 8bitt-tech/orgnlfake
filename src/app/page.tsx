@@ -30,17 +30,27 @@ const animationImages = [
 ];
 
 
-export default function Home() {
+function CustomCursor() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const revealRefs = useRef<HTMLElement[]>([]);
-
   useEffect(() => {
-    // Custom Cursor
     const handleMouseMove = (e: MouseEvent) => {
       setCursorPos({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+  return (
+    <div
+      className="landing-cursor"
+      style={{ left: cursorPos.x, top: cursorPos.y }}
+    ></div>
+  );
+}
 
+export default function Home() {
+  const revealRefs = useRef<HTMLElement[]>([]);
+
+  useEffect(() => {
     // Intersection Observer for Reveal Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -56,7 +66,6 @@ export default function Home() {
     });
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
       currentRefs.forEach(el => {
         if (el) observer.unobserve(el);
       });
@@ -82,10 +91,7 @@ export default function Home() {
         }}
       />
       <div className="landing-body">
-        <div
-          className="landing-cursor"
-          style={{ left: cursorPos.x, top: cursorPos.y }}
-        ></div>
+        <CustomCursor />
 
         <section id="home" className="banner">
           <div className="absolute w-full h-[120vh] left-0 -top-[10vh]" style={{ transform: 'translateZ(0px)', mixBlendMode: 'screen' }} data-us-project="aH0ZsntZ1TcKHIyweEA8"></div>
