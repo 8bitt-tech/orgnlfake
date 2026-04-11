@@ -10,9 +10,9 @@ type Testimonial = Database['public']['Tables']['testimonials']['Row'];
 const fallbackTestimonials: Testimonial[] = [
   {
     id: "1",
-    model_name: "Sarah Kim",
-    social_handle: "@sarahk_official",
-    testimonial_text: "OrgnFake has completely transformed my career path. The level of professional support and creative freedom they provide is unmatched in the industry. I've never felt more empowered as a creator.",
+    model_name: "Tumi",
+    social_handle: "@tumi_creates",
+    testimonial_text: "Joining this agency completely transformed my career as a creator. The team doesn’t just find brand deals; they actively helped me build a sustainable long-term strategy. Their communication is flawless, and I finally feel like my creative vision is truly supported, valued, and monetized properly.",
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
@@ -20,9 +20,9 @@ const fallbackTestimonials: Testimonial[] = [
   },
   {
     id: "2",
-    model_name: "Marcus Johnson",
-    social_handle: "@marcus_j",
-    testimonial_text: "Finally an agency that respects the autonomy of the creator. The collaborative process is seamless, and the results speak for themselves. This is the future of talent management.",
+    model_name: "Mbalenthle",
+    social_handle: "@mbalenthle.official",
+    testimonial_text: "As a model, finding a team that genuinely prioritizes your well-being and career growth is rare. From elevating my portfolio to securing high-tier bookings, their professionalism is unmatched. I always feel safe, prepared, and confident walking onto any set knowing they have my back.",
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
@@ -30,9 +30,9 @@ const fallbackTestimonials: Testimonial[] = [
   },
   {
     id: "3",
-    model_name: "Elena Petrov",
-    social_handle: "@elena_pt",
-    testimonial_text: "A truly culturally diverse and inclusive space for high fashion and creative arts. OrgnFake doesn't just manage you; they build a vision with you. Highly recommended for any serious talent.",
+    model_name: "Morgan",
+    social_handle: "@morgan_studios",
+    testimonial_text: "The level of dedication this team brings to talent management is incredible. They handle all the heavy lifting—contract negotiations, scheduling, and administrative work—so I can focus entirely on producing great content. It’s a true partnership, and my brand has grown significantly since signing.",
     rating: 5,
     created_at: new Date().toISOString(),
     image_url: null,
