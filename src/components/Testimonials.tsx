@@ -278,14 +278,7 @@ export default function Testimonials() {
     <>
       <section className="bg-neutral-900/30 w-full min-h-screen flex flex-col items-center justify-center relative py-20">
         <div className="mx-auto max-w-6xl px-6 w-full">
-          <div className="mx-auto max-w-3xl text-center mb-16 flex flex-col items-center">
-            <h2 className="text-3xl sm:text-4xl tracking-tight text-white animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both] font-instrument-serif font-normal text-center w-full">
-              What Our Creators Say
-            </h2>
-            <p className="mt-4 text-white/80 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both] font-sans text-center w-full">
-              Hear from the talents who have built their future with us
-            </p>
-          </div>
+
 
           {loading ? (
             <div className="flex justify-center items-center h-48">
