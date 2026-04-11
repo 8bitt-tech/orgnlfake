@@ -7,10 +7,10 @@ export function Footer() {
             <div className="w-5 h-5 rounded bg-orange-500 flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
             </div>
-            <span className="text-sm font-medium text-white uppercase tracking-wide">Panorama</span>
+            <span className="text-sm font-medium text-white uppercase tracking-wide">ORGNLFAKE</span>
           </div>
           <p className="text-neutral-500 text-sm mb-8 max-w-sm">
-            Curating the world's finest destinations for the modern traveler. Join our community of explorers.
+            Curating the finest creative talent and high fashion content. Join our pro-choice collective.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-neutral-600 hover:text-white transition-colors">
@@ -57,7 +57,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-neutral-600 uppercase tracking-wider">
-        <p>© 2024 Panorama Inc. All rights reserved.</p>
+        <p>© 2024 ORGNLFAKE. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-neutral-400">Privacy Policy</a>
           <a href="#" className="hover:text-neutral-400">Terms of Service</a>
