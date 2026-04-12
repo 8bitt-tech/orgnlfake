@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Portal from "./Portal";
 
 interface TermsModalProps {
   isOpen: boolean;
@@ -11,7 +12,8 @@ interface TermsModalProps {
 
 export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProps) {
   return (
-    <AnimatePresence>
+    <Portal>
+      <AnimatePresence>
       {isOpen && (
         <>
           {/* Backdrop */}
@@ -37,6 +39,7 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 30 }}
             transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+            onClick={(e) => e.stopPropagation()}
             style={{
               position: "fixed",
               top: "16px",
@@ -53,6 +56,7 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
               display: "flex",
               flexDirection: "column",
               overflow: "hidden",
+              pointerEvents: "auto",
             }}
           >
             {/* Header */}
@@ -303,7 +307,8 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
                 flexShrink: 0,
               }}
             >
-              <button
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={onCancel}
                 style={{
                   flex: 1,
@@ -317,6 +322,7 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
                   cursor: "pointer",
                   transition: "all 0.2s",
                   minWidth: "100px",
+                  pointerEvents: "auto",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
@@ -328,8 +334,9 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
                 }}
               >
                 Cancel
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={onAgree}
                 style={{
                   flex: 2,
@@ -345,6 +352,7 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
                   transition: "all 0.2s",
                   boxShadow: "0 4px 15px rgba(249, 115, 22, 0.3)",
                   minWidth: "120px",
+                  pointerEvents: "auto",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow =
@@ -358,11 +366,12 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
                 }}
               >
                 I Agree
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         </>
       )}
     </AnimatePresence>
+    </Portal>
   );
 }
