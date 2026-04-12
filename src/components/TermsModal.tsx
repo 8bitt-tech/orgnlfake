@@ -39,12 +39,12 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
             style={{
               position: "fixed",
-              top: "50%",
+              top: "24px",
               left: "50%",
-              transform: "translate(-50%, -50%)",
+              transform: "translateX(-50%)",
               width: "calc(100% - 32px)",
               maxWidth: "500px",
-              maxHeight: "min(65vh, 520px)",
+              maxHeight: "calc(100vh - 48px)",
               background: "#0a0a0a",
               border: "1px solid rgba(255, 255, 255, 0.1)",
               borderRadius: "20px",
