@@ -43,8 +43,8 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: "calc(100% - 32px)",
-              maxWidth: "560px",
-              maxHeight: "80vh",
+              maxWidth: "500px",
+              maxHeight: "min(65vh, 520px)",
               background: "#0a0a0a",
               border: "1px solid rgba(255, 255, 255, 0.1)",
               borderRadius: "20px",
@@ -59,8 +59,9 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             {/* Header */}
             <div
               style={{
-                padding: "24px 24px 16px",
+                padding: "16px 20px 12px",
                 borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                flexShrink: 0,
               }}
             >
               <div
@@ -117,10 +118,11 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
               style={{
                 flex: 1,
                 overflowY: "auto",
-                padding: "20px 24px",
-                fontSize: "0.85rem",
-                lineHeight: 1.75,
+                padding: "16px 20px",
+                fontSize: "0.82rem",
+                lineHeight: 1.65,
                 color: "#d1d5db",
+                minHeight: 0,
               }}
             >
               <p style={{ marginBottom: "16px" }}>
@@ -292,11 +294,12 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             {/* Action Buttons */}
             <div
               style={{
-                padding: "16px 24px 20px",
+                padding: "14px 20px 16px",
                 borderTop: "1px solid rgba(255, 255, 255, 0.06)",
                 display: "flex",
                 gap: "12px",
                 justifyContent: "flex-end",
+                flexShrink: 0,
               }}
             >
               <button
