@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 import { Play, Pause, Volume2, Maximize, ChevronDown, Search } from 'lucide-react';
 
 const categories = [
-  { id: 1, title: 'Fashion Editorial', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800' },
-  { id: 2, title: 'Lifestyle Editorial', span: 'col-span-1 row-span-2', img: 'https://images.unsplash.com/photo-1512413914421-4d101fc46e2d?auto=format&fit=crop&q=80&w=800' },
-  { id: 3, title: 'Boudoir', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1616683696803-c0d116c905e3?auto=format&fit=crop&q=80&w=800' },
-  { id: 4, title: 'Lingerie / Swimwear', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1515347619152-6b1a7879b29e?auto=format&fit=crop&q=80&w=800' },
-  { id: 5, title: 'Conceptual / Artistic Editorial', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1493655161922-ef9892f5a820?auto=format&fit=crop&q=80&w=800' },
-  { id: 6, title: 'Influencer / Social', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1611042553365-9b101441c135?auto=format&fit=crop&q=80&w=800' },
-  { id: 7, title: 'Cultural / Identity', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=800' },
-  { id: 8, title: 'Beauty', span: 'col-span-1 row-span-1', img: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800' },
+  { id: 1, title: 'Fashion Editorial', span: 'col-span-1 row-span-1', img: '/media/photos/1771871549700.jpeg' },
+  { id: 2, title: 'Lifestyle Editorial', span: 'col-span-1 row-span-2', img: '/media/photos/505997536_10021452084637537_3772584361098111414_n.jpg' },
+  { id: 3, title: 'Boudoir', span: 'col-span-1 row-span-1', img: '/media/photos/1771871554756.jpeg' },
+  { id: 4, title: 'Lingerie / Swimwear', span: 'col-span-1 row-span-1', img: '/media/photos/1771871576699.jpeg' },
+  { id: 5, title: 'Conceptual / Artistic Editorial', span: 'col-span-1 row-span-1', img: '/media/photos/510739738_23874207035602141_2899064520723821852_n_1.jpg' },
+  { id: 6, title: 'Influencer / Social', span: 'col-span-1 row-span-1', img: '/media/photos/_MG_0033.jpg' },
+  { id: 7, title: 'Cultural / Identity', span: 'col-span-1 row-span-1', img: '/media/photos/freepik__photo-a-20yearold-asian-woman-with-long-brown-hair__61285.jpeg' },
+  { id: 8, title: 'Beauty', span: 'col-span-1 row-span-1', img: '/media/photos/freepik__photo-a-22yearold-black-woman-with-dreadlocks-wear__19197.png' },
 ];
 
 export default function PortfolioSection() {
@@ -126,16 +126,16 @@ export default function PortfolioSection() {
           {/* Featured Runway Video Layout 1 */}
           <VideoPlayerCard
             title="Runway Exclusives"
-            img="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800"
-            duration="0:07 / 3:03"
+            videoSrc="/media/videos/0304.mp4"
+            duration="0:07 / 0:15"
             delay={0.5}
           />
 
           {/* Featured Runway Video Layout 2 */}
           <VideoPlayerCard
             title="Behind the Scenes"
-            img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=800"
-            duration="0:32 / 5:00"
+            videoSrc="/media/videos/0305.mp4"
+            duration="0:03 / 0:12"
             delay={0.7}
           />
 
@@ -145,7 +145,7 @@ export default function PortfolioSection() {
   );
 }
 
-function VideoPlayerCard({ title, img, duration, delay }: { title: string; img: string; duration: string; delay: number }) {
+function VideoPlayerCard({ title, videoSrc, duration, delay }: { title: string; videoSrc: string; duration: string; delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -154,10 +154,14 @@ function VideoPlayerCard({ title, img, duration, delay }: { title: string; img: 
       whileHover={{ y: -5 }}
       className="relative w-full h-[280px] rounded-2xl overflow-hidden group bg-black border border-white/10 shadow-[0_10px_30px_rgba(255,69,0,0.1)] cursor-pointer"
     >
-      {/* Video Thumbnail */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-        style={{ backgroundImage: `url(${img})` }}
+      {/* Real Video Background */}
+      <video
+        src={videoSrc}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
       />
 
       {/* Central Play Button */}
