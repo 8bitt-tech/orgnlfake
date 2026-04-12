@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Send, CheckCircle2 } from 'lucide-react';
+import TermsModal from '@/components/TermsModal';
 
 const steps = [
   "Personal Info",
@@ -17,6 +18,7 @@ const steps = [
 const JoinForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
   const [formData, setFormData] = useState({
     // Basic Info
     fullName: '', age: '', email: '', phone: '', country: '', city: '',
@@ -289,13 +291,34 @@ const JoinForm = () => {
                     required
                     style={{ accentColor: '#ffffff', marginTop: '4px', width: '16px', height: '16px' }}
                     checked={formData.isOver18}
-                    onChange={e => updateFields({ isOver18: e.target.checked })}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        e.preventDefault();
+                        setShowTerms(true);
+                      } else {
+                        updateFields({ isOver18: false });
+                      }
+                    }}
                   />
                   <span style={{ fontSize: '12px', color: '#9ca3af', lineHeight: 1.6, fontStyle: 'italic' }}>
-                    I confirm I am 18+ years of age and agree to the terms and conditions of orgnlfake agency.
+                    I confirm I am 18+ years of age and agree to the{' '}
+                    <a href="/terms" target="_blank" style={{ color: '#f97316', textDecoration: 'underline' }}>Terms of Service</a>{' '}
+                    and{' '}
+                    <a href="/privacy" target="_blank" style={{ color: '#f97316', textDecoration: 'underline' }}>Privacy Policy</a>{' '}
+                    of Orgnlfake agency.
                   </span>
                 </label>
               </div>
+              <TermsModal
+                isOpen={showTerms}
+                onAgree={() => {
+                  setShowTerms(false);
+                  updateFields({ isOver18: true });
+                }}
+                onCancel={() => {
+                  setShowTerms(false);
+                }}
+              />
             </motion.div>
           )}
         </AnimatePresence>

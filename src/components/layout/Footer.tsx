@@ -55,10 +55,10 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-neutral-600 uppercase tracking-wider">
-        <p>© 2024 ORGNLFAKE. All rights reserved.</p>
+        <p>© 2026 ORGNLFAKE. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-neutral-400">Privacy Policy</a>
-          <a href="#" className="hover:text-neutral-400">Terms of Service</a>
+          <a href="/privacy" className="hover:text-neutral-400">Privacy Policy</a>
+          <a href="/terms" className="hover:text-neutral-400">Terms of Service</a>
         </div>
       </div>
     </footer>

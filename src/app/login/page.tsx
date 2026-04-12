@@ -3,35 +3,66 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import MarqueeReels from "@/components/MarqueeReels";
+import TermsModal from "@/components/TermsModal";
 import { login, signup, signInWithOAuth } from "@/app/auth/actions";
 
 export default function LoginPage() {
     const [isSignUp, setIsSignUp] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [showTerms, setShowTerms] = useState(false);
+    const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
+
+    function requireTermsAgreement(action: () => void) {
+        setPendingAction(() => action);
+        setShowTerms(true);
+    }
+
+    function handleTermsAgree() {
+        setShowTerms(false);
+        if (pendingAction) {
+            pendingAction();
+            setPendingAction(null);
+        }
+    }
+
+    function handleTermsCancel() {
+        setShowTerms(false);
+        setPendingAction(null);
+        setLoading(false);
+    }
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
         setError(null);
 
-        const result = isSignUp
-            ? await signup(formData)
-            : await login(formData);
+        const action = async () => {
+            const result = isSignUp
+                ? await signup(formData)
+                : await login(formData);
 
-        if (result?.error) {
-            setError(result.error);
-            setLoading(false);
-        }
+            if (result?.error) {
+                setError(result.error);
+                setLoading(false);
+            }
+        };
+
+        requireTermsAgreement(action);
     }
 
     async function handleOAuth(provider: 'google' | 'github') {
         setLoading(true);
         setError(null);
-        const result = await signInWithOAuth(provider);
-        if (result?.error) {
-            setError(result.error);
-            setLoading(false);
-        }
+
+        const action = async () => {
+            const result = await signInWithOAuth(provider);
+            if (result?.error) {
+                setError(result.error);
+                setLoading(false);
+            }
+        };
+
+        requireTermsAgreement(action);
     }
 
     return (
@@ -45,6 +76,13 @@ export default function LoginPage() {
 
             {/* Overlay gradient for depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
+
+            {/* Terms Modal */}
+            <TermsModal
+                isOpen={showTerms}
+                onAgree={handleTermsAgree}
+                onCancel={handleTermsCancel}
+            />
 
             {/* Login Content */}
             <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
