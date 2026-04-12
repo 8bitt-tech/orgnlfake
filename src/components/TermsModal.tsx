@@ -39,15 +39,14 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
             style={{
               position: "fixed",
-              top: "24px",
+              top: "16px",
               left: "50%",
               transform: "translateX(-50%)",
-              width: "calc(100% - 32px)",
-              maxWidth: "500px",
-              maxHeight: "calc(100vh - 48px)",
+              width: "min(calc(100% - 24px), 500px)",
+              maxHeight: "calc(100dvh - 32px)",
               background: "#0a0a0a",
               border: "1px solid rgba(255, 255, 255, 0.1)",
-              borderRadius: "20px",
+              borderRadius: "16px",
               boxShadow:
                 "0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(249, 115, 22, 0.08)",
               zIndex: 9999,
@@ -59,7 +58,7 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             {/* Header */}
             <div
               style={{
-                padding: "16px 20px 12px",
+                padding: "16px 16px 12px",
                 borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
                 flexShrink: 0,
               }}
@@ -115,12 +114,13 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
 
             {/* Scrollable Terms Content */}
             <div
+              className="custom-scrollbar"
               style={{
                 flex: 1,
                 overflowY: "auto",
-                padding: "16px 20px",
-                fontSize: "0.82rem",
-                lineHeight: 1.65,
+                padding: "16px 16px",
+                fontSize: "0.8rem",
+                lineHeight: 1.6,
                 color: "#d1d5db",
                 minHeight: 0,
               }}
@@ -294,26 +294,29 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
             {/* Action Buttons */}
             <div
               style={{
-                padding: "14px 20px 16px",
+                padding: "12px 16px 16px",
                 borderTop: "1px solid rgba(255, 255, 255, 0.06)",
                 display: "flex",
-                gap: "12px",
+                gap: "10px",
                 justifyContent: "flex-end",
+                flexWrap: "wrap",
                 flexShrink: 0,
               }}
             >
               <button
                 onClick={onCancel}
                 style={{
-                  padding: "10px 24px",
-                  borderRadius: "9999px",
+                  flex: 1,
+                  padding: "10px 16px",
+                  borderRadius: "12px",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   background: "transparent",
                   color: "#9ca3af",
-                  fontSize: "0.85rem",
+                  fontSize: "0.8rem",
                   fontWeight: 600,
                   cursor: "pointer",
                   transition: "all 0.2s",
+                  minWidth: "100px",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
@@ -329,17 +332,19 @@ export default function TermsModal({ isOpen, onAgree, onCancel }: TermsModalProp
               <button
                 onClick={onAgree}
                 style={{
-                  padding: "10px 28px",
-                  borderRadius: "9999px",
+                  flex: 2,
+                  padding: "10px 20px",
+                  borderRadius: "12px",
                   border: "none",
                   background:
                     "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
                   color: "#ffffff",
-                  fontSize: "0.85rem",
+                  fontSize: "0.8rem",
                   fontWeight: 700,
                   cursor: "pointer",
                   transition: "all 0.2s",
                   boxShadow: "0 4px 15px rgba(249, 115, 22, 0.3)",
+                  minWidth: "120px",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow =
