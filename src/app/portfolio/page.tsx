@@ -1,8 +1,6 @@
 import AnimatedPortfolioGrid from "@/components/AnimatedPortfolioGrid";
-import dynamic from "next/dynamic";
+import PortfolioSection from "@/components/PortfolioSection";
 import TheCollection from "@/components/TheCollection";
-
-const PortfolioSection = dynamic(() => import("@/components/PortfolioSection"), { ssr: false });
 
 export default function PortfolioPage() {
     return (
