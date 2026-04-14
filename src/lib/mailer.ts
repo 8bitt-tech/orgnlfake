@@ -16,17 +16,19 @@ const transporter = nodemailer.createTransport({
 interface SendMailOptions {
   from?: string;
   to: string | string[];
+  replyTo?: string;
   subject: string;
   html: string;
 }
 
-export async function sendMail({ from, to, subject, html }: SendMailOptions) {
+export async function sendMail({ from, to, replyTo, subject, html }: SendMailOptions) {
   const defaultFrom = `ORGNLFAKE <${process.env.SMTP_FROM || "admin@orgnlfake.agency"}>`;
 
   try {
     const info = await transporter.sendMail({
       from: from || defaultFrom,
       to: Array.isArray(to) ? to.join(", ") : to,
+      ...(replyTo && { replyTo }),
       subject,
       html,
     });

@@ -19,6 +19,7 @@ const JoinForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
+  const [stepError, setStepError] = useState('');
   const [formData, setFormData] = useState({
     // Basic Info
     fullName: '', age: '', email: '', phone: '', country: '', city: '',
@@ -33,15 +34,72 @@ const JoinForm = () => {
     // Budget/Commitment
     budget: '', readyToInvest: 'No', startDate: '', commitment: '',
     // Legal & Open
-    contactMethod: '', isOver18: false, whyUs: '', uniqueFactor: ''
+    contactMethod: '', isOver18: false, whyUs: '', uniqueFactor: '',
+    subscribe: false
   });
 
   const updateFields = (fields: Partial<typeof formData>) => {
     setFormData(prev => ({ ...prev, ...fields }));
   };
 
-  const handleNext = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
-  const handleBack = () => setCurrentStep(prev => Math.max(prev - 1, 0));
+  // Per-step required field validation
+  const validateStep = (step: number): boolean => {
+    switch (step) {
+      case 0: // Personal Info
+        if (!formData.fullName || !formData.email || !formData.phone || !formData.age || !formData.country || !formData.city) {
+          setStepError('Please fill in all fields before continuing.');
+          return false;
+        }
+        break;
+      case 1: // Identity
+        if (!formData.creatorType || !formData.niche || !formData.experience || !formData.bio) {
+          setStepError('Please fill in all fields before continuing.');
+          return false;
+        }
+        break;
+      case 2: // Socials
+        if (!formData.instagram || !formData.tiktok || !formData.youtube || !formData.twitter || !formData.totalFollowers) {
+          setStepError('Please fill in all social media fields before continuing.');
+          return false;
+        }
+        break;
+      case 3: // Brand & Content
+        if (formData.contentType.length === 0 || !formData.postingFrequency || !formData.contentStyle) {
+          setStepError('Please select at least one content type and fill in all fields.');
+          return false;
+        }
+        break;
+      case 4: // Services
+        if (formData.servicesNeeded.length === 0) {
+          setStepError('Please select at least one service you need.');
+          return false;
+        }
+        break;
+      case 5: // Logistics
+        if (!formData.budget || !formData.commitment || !formData.contactMethod || !formData.startDate) {
+          setStepError('Please fill in all fields before continuing.');
+          return false;
+        }
+        break;
+      case 6: // Final Details
+        if (!formData.whyUs || !formData.uniqueFactor || !formData.isOver18) {
+          setStepError('Please fill in all fields and accept the terms.');
+          return false;
+        }
+        break;
+    }
+    setStepError('');
+    return true;
+  };
+
+  const handleNext = () => {
+    if (!validateStep(currentStep)) return;
+    setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
+  };
+  const handleBack = () => {
+    setStepError('');
+    setCurrentStep(prev => Math.max(prev - 1, 0));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +111,7 @@ const JoinForm = () => {
     }
 
     // Double-check required final fields before proceeding
-    if (!formData.whyUs || !formData.uniqueFactor || !formData.isOver18) {
+    if (!validateStep(6)) {
       return;
     }
 
@@ -284,6 +342,20 @@ const JoinForm = () => {
                   required
                 />
               </div>
+              {/* Email List Opt-in */}
+              <div style={{ paddingTop: '8px' }}>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    style={{ accentColor: '#ffffff', marginTop: '4px', width: '16px', height: '16px' }}
+                    checked={formData.subscribe}
+                    onChange={(e) => updateFields({ subscribe: e.target.checked })}
+                  />
+                  <span style={{ fontSize: '12px', color: '#9ca3af', lineHeight: 1.6 }}>
+                    I agree to join the email list for updates and exclusive opportunities from Orgnlfake.
+                  </span>
+                </label>
+              </div>
               <div style={{ paddingTop: '16px' }}>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
                   <input
@@ -323,8 +395,28 @@ const JoinForm = () => {
           )}
         </AnimatePresence>
 
+        {/* Validation Error Message */}
+        {stepError && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              marginTop: '24px',
+              padding: '12px 16px',
+              background: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
+              borderRadius: '10px',
+              color: '#f87171',
+              fontSize: '0.85rem',
+              textAlign: 'center',
+            }}
+          >
+            {stepError}
+          </motion.div>
+        )}
+
         {/* Navigation Controls */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '48px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: stepError ? '16px' : '48px', alignItems: 'center' }}>
           {currentStep > 0 ? (
             <button
               type="button"

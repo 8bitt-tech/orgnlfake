@@ -5,6 +5,9 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
 
+    // Check if they ticked the email list box
+    const wantsToSubscribe = data.subscribe === true;
+
     const fieldRows = [
       ['Full Name', data.fullName],
       ['Email', data.email],
@@ -31,6 +34,7 @@ export async function POST(req: Request) {
       ['Preferred Start Date', data.startDate],
       ['Why You', data.whyUs],
       ['Unique Factor', data.uniqueFactor],
+      ['Email List Opt-in', wantsToSubscribe ? '✅ Yes — wants to receive updates' : '❌ No'],
     ]
       .filter(([, val]) => val)
       .map(([label, val]) => `<tr><td style="padding:8px 16px;font-weight:600;color:#666;vertical-align:top;white-space:nowrap;">${label}</td><td style="padding:8px 16px;color:#1a1a1a;">${val}</td></tr>`)
@@ -44,12 +48,15 @@ export async function POST(req: Request) {
         </table>
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #eaeaea;" />
         <p style="font-size: 14px; color: #666;">This application was submitted via the Join Us page on orgnlfake.agency.</p>
+        <p style="font-size: 12px; color: #999;"><em>💡 Tip: Hit "Reply" to respond directly to ${data.fullName || 'the applicant'} at ${data.email}.</em></p>
       </div>
     `;
 
+    // 1. Send the application to the agency with Reply-To set to the creator's email
     const { success, error } = await sendMail({
       from: 'Join Application <join@orgnlfake.agency>',
       to: 'join@orgnlfake.agency',
+      replyTo: data.email, // Allows agency to hit 'Reply' and respond directly to the creator
       subject: `🚀 New Join Application: ${data.fullName || 'Unknown'}`,
       html: emailHtml,
     });
@@ -57,6 +64,13 @@ export async function POST(req: Request) {
     if (!success) {
       console.error("sendMail failed in /api/join:", error);
       return NextResponse.json({ error: 'Failed to deliver application email' }, { status: 500 });
+    }
+
+    // 2. Log subscriber opt-in for future mailing list integration (Resend, Mailchimp, etc.)
+    if (wantsToSubscribe) {
+      console.log(`📧 New email list subscriber: ${data.fullName} <${data.email}>`);
+      // Future: integrate with Resend Audiences, Mailchimp, or similar:
+      // await resend.contacts.create({ email, firstName, audienceId: process.env.RESEND_AUDIENCE_ID });
     }
 
     return NextResponse.json({ success: true });
