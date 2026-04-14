@@ -57,9 +57,9 @@ const JoinForm = () => {
           return false;
         }
         break;
-      case 2: // Socials
-        if (!formData.instagram || !formData.tiktok || !formData.youtube || !formData.twitter || !formData.totalFollowers) {
-          setStepError('Please fill in all social media fields before continuing.');
+      case 2: // Socials — at least one platform is required
+        if (!formData.instagram && !formData.tiktok && !formData.youtube && !formData.twitter) {
+          setStepError('Please enter at least one social media handle.');
           return false;
         }
         break;
