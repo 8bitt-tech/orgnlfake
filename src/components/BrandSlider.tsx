@@ -29,7 +29,7 @@ const ROW_2 = ALL_LOGOS.slice(9);
 export default function BrandSlider() {
   return (
     <div className="logo-slider-section">
-      <div className="logo-slider-header">
+      <div className="logo-slider-header no-reveal">
         <p className="logo-slider-tagline">Trusted Partnerships</p>
         <h2 className="logo-slider-title">
           Brands We&apos;ve <em>Collaborated</em> With
