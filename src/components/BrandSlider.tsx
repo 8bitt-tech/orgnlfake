@@ -29,7 +29,6 @@ const ROW_2 = ALL_LOGOS.slice(9);
 export default function BrandSlider() {
   return (
     <div className="logo-slider-section">
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
       <div className="logo-slider-header">
         <p className="logo-slider-tagline">Trusted Partnerships</p>
         <h2 className="logo-slider-title">

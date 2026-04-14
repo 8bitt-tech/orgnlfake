@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { MainNav } from "@/components/layout/main-nav";
 import { Footer } from "@/components/layout/Footer";
 import GlobalReveal from "@/components/GlobalReveal";
@@ -15,6 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "600"],
+});
+
 export const metadata: Metadata = {
   title: "Orgnlfake",
   description: "Connect with top content creators",
@@ -28,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased bg-black text-white min-h-screen`}
       >
         <GlobalReveal />
         <MainNav />
