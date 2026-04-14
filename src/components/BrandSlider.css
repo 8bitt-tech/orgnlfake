@@ -4,8 +4,10 @@
   width: 100%;
   overflow-x: hidden;
   position: relative;
-  z-index: 40;
+  z-index: 50;
   background-color: #000000;
+  clear: both;
+  margin-top: 4rem;
 }
 
 /* Header */
