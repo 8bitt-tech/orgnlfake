@@ -1,0 +1,151 @@
+/* Section wrapper */
+.logo-slider-section {
+  padding: 80px 0 40px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Header */
+.logo-slider-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+/* Tagline above title */
+.logo-slider-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 12px;
+}
+
+/* Title */
+.logo-slider-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.logo-slider-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Decorative divider */
+.logo-slider-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  margin: 20px auto 0;
+}
+
+/* Container for both rows */
+.logo-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Marquee wrapper */
+.marquee-brands {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Fade edges */
+.marquee-brands::before,
+.marquee-brands::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-brands::before {
+  left: 0;
+  background: linear-gradient(to right, #000000 0%, transparent 100%);
+}
+.marquee-brands::after {
+  right: 0;
+  background: linear-gradient(to left, #000000 0%, transparent 100%);
+}
+
+/* The track */
+.track-brands {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Animations */
+.move-left {
+  animation: scrollLeft 35s linear infinite;
+}
+
+.move-right {
+  transform: translateX(-50%);
+  animation: scrollRight 35s linear infinite;
+}
+
+/* Pause on hover */
+.track-brands:hover {
+  animation-play-state: paused;
+}
+
+/* Each logo slot */
+.logo-placeholder {
+  width: 160px;
+  height: 80px;
+  margin: 0 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.55;
+}
+
+.logo-placeholder:hover {
+  opacity: 1;
+  transform: scale(1.08);
+  cursor: pointer;
+}
+
+/* The actual image */
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Keyframes */
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .logo-placeholder {
+    width: 110px;
+    height: 56px;
+    margin: 0 16px;
+  }
+}

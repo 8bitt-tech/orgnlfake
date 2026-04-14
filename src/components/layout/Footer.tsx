@@ -1,6 +1,12 @@
+"use client";
+
+import BrandSlider from "@/components/BrandSlider";
+
 export function Footer() {
   return (
-    <footer className="border-white/10 border-t pt-16 pb-8 m-8">
+    <>
+      <BrandSlider />
+      <footer className="border-white/10 border-t pt-16 pb-8 m-8">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center gap-3 mb-6">
@@ -62,5 +68,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
