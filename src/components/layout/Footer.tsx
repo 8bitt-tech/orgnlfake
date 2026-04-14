@@ -1,6 +1,7 @@
 "use client";
 
 import BrandSlider from "@/components/BrandSlider";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -10,9 +11,14 @@ export function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-5 h-5 rounded bg-orange-500 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
-            </div>
+            <Image 
+              src="/logo/ggggggg.gif" 
+              alt="Orgnlfake Logo" 
+              width={20} 
+              height={20} 
+              className="rounded-sm bg-black" 
+              unoptimized 
+            />
             <span className="text-sm font-medium text-white uppercase tracking-wide">ORGNLFAKE</span>
           </div>
           <p className="text-neutral-500 text-sm mb-8 max-w-sm">

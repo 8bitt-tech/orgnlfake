@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -25,9 +26,14 @@ export function MainNav() {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo - Left aligned */}
                     <Link href="/" className="group flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-                            O
-                        </div>
+                        <Image 
+                            src="/logo/ggggggg.gif" 
+                            alt="Orgnlfake Logo" 
+                            width={32} 
+                            height={32} 
+                            className="rounded-lg shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform bg-black" 
+                            unoptimized 
+                        />
                         <span className="text-xl font-bold text-white tracking-tighter hover:text-white/90 transition-colors">
                             Orgnlfake
                         </span>

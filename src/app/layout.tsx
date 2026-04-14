@@ -25,6 +25,10 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Orgnlfake",
   description: "Connect with top content creators",
+  icons: {
+    icon: "/logo/ggggggg.gif",
+    apple: "/logo/ggggggg.gif",
+  },
 };
 
 export default function RootLayout({
