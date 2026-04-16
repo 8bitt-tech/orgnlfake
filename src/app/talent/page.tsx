@@ -153,6 +153,19 @@ export default async function TalentPage() {
                 avatar: "/Profile photos/@anathii_peter.jpg",
                 media_assets: ["/Placeholders/blueplaceholder.png"],
                 social_stats: { followers: 17000, engagement_rate: "8.5%", total_reach: 25000 }
+            },
+            {
+                id: "creator-patricia-boity",
+                username: "patriciaboity",
+                avatar: "/images/profiles/patriciaboity.jpg",
+                media_assets: [
+                    "/Placeholders/blueplaceholder.png",
+                    "/Placeholders/greenplaceholder.png",
+                    "/Placeholders/yellowplaceholder.png",
+                    "/Placeholders/redplaceholder.png"
+                ],
+                social_stats: { followers: 199000, engagement_rate: "5.4%", total_reach: 350000 },
+                tiktok_stats: { followers: 61000, engagement_rate: "9.2%", total_reach: 2500000 }
             }
         ];
     }

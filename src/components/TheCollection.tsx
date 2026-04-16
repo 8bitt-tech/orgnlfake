@@ -29,9 +29,9 @@ const categoryImages = {
         '/landing/Boudoir/IMG-20230814-WA0032.jpg', '/landing/Boudoir/IMG_0440 colorized.jpg',
         '/landing/Boudoir/htsyssf.jpg', '/landing/Boudoir/iuyhgfdt.jpg', '/landing/Boudoir/jujnbghytfk.jpg',
         '/landing/Boudoir/jukoiut.jpg', '/landing/Boudoir/juyyhgtrfdews.jpg',
-        '/landing/Boudoir/orgnlfake__1737619218_3551684337159388122_4183375751.webp',
+        '/landing/ANIMATION/gfdngdfhgdfjtyy.jpg',
         '/landing/Boudoir/orgnlfake__1756921600_3713650006348904412_4183375751.jpg',
-        '/landing/Boudoir/reduyigsg.jpg', '/landing/Boudoir/yfytf.jpg', '/landing/Boudoir/ytgfree.jpg'
+        '/landing/Boudoir/reduyigsg.jpg', '/landing/Boudoir/yfytf_v2.jpg', '/landing/Boudoir/ytgfree.jpg'
     ],
     active: ['/landing/Active/1.jpg', '/landing/Active/4.jpg'],
     skincare: [

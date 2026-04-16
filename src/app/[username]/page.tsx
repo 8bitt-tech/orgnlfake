@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { ProfileHeader } from "@/components/profile/profile-header";
 import { RateCardDisplay } from "@/components/profile/rate-card-display";
 import { InstagramAnalytics } from "@/components/profile/instagram-analytics";
+import { TiktokAnalytics } from "@/components/profile/tiktok-analytics";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -99,6 +100,12 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             social_stats: { followers: 17000, engagement_rate: "8.5%", total_reach: 25000 },
             rate_card: [],
         },
+        "patriciaboity": {
+            username: "patriciaboity",
+            social_stats: { followers: 199000, engagement_rate: "5.4%", total_reach: 350000 },
+            tiktok_stats: { followers: 61000, engagement_rate: "9.2%", total_reach: 2500000 },
+            rate_card: [],
+        },
     };
 
     // Fetch profile from Supabase, fall back to mock data
@@ -139,6 +146,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "__bellaswrld": "/Profile photos/@__bellaswrld.jpg",
         "they_adore_tshego": "/Profile photos/@they_adore_tshego.jpg",
         "anathii_peter": "/Profile photos/@anathii_peter.jpg",
+        "patriciaboity": "/images/profiles/patriciaboity.jpg",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;
@@ -152,6 +160,19 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         },
         decodedUsername
     );
+
+    const tiktokStats: any = profileData.tiktok_stats || null;
+    let tiktokAnalyticsData = null;
+    if (tiktokStats) {
+        tiktokAnalyticsData = generateAnalyticsData(
+            {
+                followers: tiktokStats.followers,
+                engagement_rate: tiktokStats.engagement_rate,
+                total_reach: tiktokStats.total_reach,
+            },
+            decodedUsername
+        );
+    }
 
     return (
         <div className="min-h-screen pb-20">
@@ -183,6 +204,14 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                                 analytics={analyticsData}
                                 username={decodedUsername}
                             />
+
+                            {/* TikTok Analytics Graph */}
+                            {tiktokAnalyticsData && (
+                                <TiktokAnalytics
+                                    analytics={tiktokAnalyticsData}
+                                    username={decodedUsername}
+                                />
+                            )}
                         </div>
 
                         {/* Sidebar / Actions */}
