@@ -18,6 +18,7 @@ export default async function TalentPage() {
         avatar?: string;
         media_assets: unknown;
         social_stats: unknown;
+        tiktok_stats?: unknown;
     };
 
     const { data: creators, error } = await supabase
@@ -26,7 +27,7 @@ export default async function TalentPage() {
         .eq("status", "active")
         .order("created_at", { ascending: false }) as { data: CreatorRow[] | null; error: unknown };
 
-    let creatorsData = creators;
+    let creatorsData: CreatorRow[] | null = creators;
     let isMockData = false;
 
     if (error || !creators || creators.length === 0) {
