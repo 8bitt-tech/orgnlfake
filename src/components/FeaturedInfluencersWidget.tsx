@@ -8,6 +8,24 @@ import { createClient } from '@/lib/supabase/client';
 const mockCreators = [
   {
     id: 1,
+    handle: '@barbiie.stallion',
+    image: '/mediakits/9.jpg',
+    avatar: '/media/photos/barbiie_stallion.jpg',
+    followers: '323.0K',
+    engagement: '4.8%',
+    reach: '500.0K',
+  },
+  {
+    id: 2,
+    handle: '@patriciaboity',
+    image: '/Creators%20Portfolios/@patriciaboity/651574862_18038958509764840_6215085067574022411_n.jpg',
+    avatar: '/images/profiles/patriciaboity.jpg',
+    followers: '199.0K',
+    engagement: '5.4%',
+    reach: '350.0K',
+  },
+  {
+    id: 3,
     handle: '@gorg_fox.rsa',
     image: '/mediakits/2025-08-19-at-01.29.jpg', 
     avatar: '/images/profiles/gorg_fox.rsa.jpg',
@@ -16,31 +34,13 @@ const mockCreators = [
     reach: '55.0K',
   },
   {
-    id: 2,
+    id: 4,
     handle: '@momobabes21',
     image: '/mediakits/_MG_0048 2.jpg',
     avatar: '/images/profiles/momobabes21.jpg',
     followers: '64.0K',
     engagement: '8.1%',
     reach: '95.0K',
-  },
-  {
-    id: 3,
-    handle: '@lion.paballo',
-    image: '/mediakits/_MG_0048.jpg',
-    avatar: '/media/photos/lion_paballo.jpg',
-    followers: '89.0K',
-    engagement: '5.4%',
-    reach: '135.0K',
-  },
-  {
-    id: 4,
-    handle: '@barbiie.stallion',
-    image: '/mediakits/9.jpg',
-    avatar: '/media/photos/barbiie_stallion.jpg',
-    followers: '323.0K',
-    engagement: '4.8%',
-    reach: '500.0K',
   }
 ];
 
