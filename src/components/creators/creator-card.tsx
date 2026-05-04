@@ -18,10 +18,11 @@ interface CreatorCardProps {
     images: string[];
     avatar?: string;
     socialStats?: SocialStats | null;
+    tiktokStats?: SocialStats | null;
     className?: string;
 }
 
-export function CreatorCard({ username, images, avatar, socialStats, className }: CreatorCardProps) {
+export function CreatorCard({ username, images, avatar, socialStats, tiktokStats, className }: CreatorCardProps) {
     return (
         <div className={cn(
             "group relative rounded-2xl overflow-hidden border border-white/10 bg-black/20 backdrop-blur-sm transition-all hover:border-white/20 hover:shadow-xl hover:shadow-indigo-500/10 no-reveal",
@@ -54,28 +55,72 @@ export function CreatorCard({ username, images, avatar, socialStats, className }
 
             {/* Stats Section */}
             <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
-                {socialStats && (
-                    <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
-                        <div className="p-1.5 sm:p-2 rounded-lg bg-white/5">
-                            <Users className="w-3 h-3 sm:w-4 sm:h-4 mx-auto mb-1 text-indigo-400" />
-                            <p className="text-[9px] sm:text-xs text-muted-foreground">Followers</p>
-                            <p className="text-xs sm:text-sm font-semibold text-white">
-                                {socialStats.followers ? formatNumber(socialStats.followers) : "—"}
-                            </p>
+                {(socialStats || tiktokStats) && (
+                    <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+                        {/* Followers Section */}
+                        <div className="p-1.5 sm:p-2 rounded-lg bg-white/5 flex flex-col justify-between">
+                            <div className="text-center">
+                                <Users className="w-3 h-3 sm:w-4 sm:h-4 mx-auto mb-1 text-indigo-400" />
+                                <p className="text-[9px] sm:text-xs text-muted-foreground mb-1.5 uppercase tracking-wider">Followers</p>
+                            </div>
+                            <div className="space-y-1 mt-auto border-t border-white/10 pt-1.5">
+                                {socialStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">IG</span>
+                                        <span className="font-semibold text-white">{socialStats.followers ? formatNumber(socialStats.followers) : "—"}</span>
+                                    </div>
+                                )}
+                                {tiktokStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">TT</span>
+                                        <span className="font-semibold text-white">{tiktokStats.followers ? formatNumber(tiktokStats.followers) : "—"}</span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                        <div className="p-1.5 sm:p-2 rounded-lg bg-white/5">
-                            <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 mx-auto mb-1 text-green-400" />
-                            <p className="text-[9px] sm:text-xs text-muted-foreground">Engagement</p>
-                            <p className="text-xs sm:text-sm font-semibold text-white">
-                                {socialStats.engagement_rate || "—"}
-                            </p>
+
+                        {/* Engagement Section */}
+                        <div className="p-1.5 sm:p-2 rounded-lg bg-white/5 flex flex-col justify-between">
+                            <div className="text-center">
+                                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 mx-auto mb-1 text-green-400" />
+                                <p className="text-[9px] sm:text-xs text-muted-foreground mb-1.5 uppercase tracking-wider">Engagement</p>
+                            </div>
+                            <div className="space-y-1 mt-auto border-t border-white/10 pt-1.5">
+                                {socialStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">IG</span>
+                                        <span className="font-semibold text-white">{socialStats.engagement_rate || "—"}</span>
+                                    </div>
+                                )}
+                                {tiktokStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">TT</span>
+                                        <span className="font-semibold text-white">{tiktokStats.engagement_rate || "—"}</span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                        <div className="p-1.5 sm:p-2 rounded-lg bg-white/5">
-                            <Eye className="w-3 h-3 sm:w-4 sm:h-4 mx-auto mb-1 text-purple-400" />
-                            <p className="text-[9px] sm:text-xs text-muted-foreground">Reach</p>
-                            <p className="text-xs sm:text-sm font-semibold text-white">
-                                {socialStats.total_reach ? formatNumber(socialStats.total_reach) : "—"}
-                            </p>
+
+                        {/* Reach Section */}
+                        <div className="p-1.5 sm:p-2 rounded-lg bg-white/5 flex flex-col justify-between">
+                            <div className="text-center">
+                                <Eye className="w-3 h-3 sm:w-4 sm:h-4 mx-auto mb-1 text-purple-400" />
+                                <p className="text-[9px] sm:text-xs text-muted-foreground mb-1.5 uppercase tracking-wider">Reach</p>
+                            </div>
+                            <div className="space-y-1 mt-auto border-t border-white/10 pt-1.5">
+                                {socialStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">IG</span>
+                                        <span className="font-semibold text-white">{socialStats.total_reach ? formatNumber(socialStats.total_reach) : "—"}</span>
+                                    </div>
+                                )}
+                                {tiktokStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">TT</span>
+                                        <span className="font-semibold text-white">{tiktokStats.total_reach ? formatNumber(tiktokStats.total_reach) : "—"}</span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 )}

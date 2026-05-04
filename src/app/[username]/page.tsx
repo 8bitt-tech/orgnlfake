@@ -42,7 +42,8 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         },
         "lion.paballo": {
             username: "lion.paballo",
-            social_stats: { followers: 89000, engagement_rate: "5.4%", total_reach: 135000 },
+            social_stats: { followers: 102000, engagement_rate: "5.4%", total_reach: 155000 },
+            tiktok_stats: { followers: 125600, engagement_rate: "8.5%", total_reach: 2500000 },
             rate_card: [],
         },
         "barbiie.stallion": {
@@ -190,6 +191,11 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                             engagement_rate: socialStats.engagement_rate,
                             total_reach: socialStats.total_reach
                         }}
+                        tiktokStats={tiktokStats ? {
+                            followers: tiktokStats.followers,
+                            engagement_rate: tiktokStats.engagement_rate,
+                            total_reach: tiktokStats.total_reach
+                        } : null}
                         avatarUrl={avatarUrl}
                         className="mb-12"
                     />

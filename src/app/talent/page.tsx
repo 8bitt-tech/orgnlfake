@@ -64,7 +64,8 @@ export default async function TalentPage() {
                 username: "lion.paballo",
                 avatar: "/media/photos/lion_paballo.jpg",
                 media_assets: ["/mediakits/_MG_0048.jpg"],
-                social_stats: { followers: 89000, engagement_rate: "5.4%", total_reach: 135000 }
+                social_stats: { followers: 102000, engagement_rate: "5.4%", total_reach: 155000 },
+                tiktok_stats: { followers: 125600, engagement_rate: "8.5%", total_reach: 2500000 }
             },
             {
                 id: "creator-barbiie-stallion",
@@ -228,8 +229,13 @@ export default async function TalentPage() {
 
                         const avatar = creator.avatar;
 
-                        // social_stats is JSONB, cast appropriately
                         const socialStats = creator.social_stats as {
+                            followers?: number;
+                            engagement_rate?: string;
+                            total_reach?: number;
+                        } | null;
+
+                        const tiktokStats = creator.tiktok_stats as {
                             followers?: number;
                             engagement_rate?: string;
                             total_reach?: number;
@@ -242,6 +248,7 @@ export default async function TalentPage() {
                                 avatar={avatar}
                                 images={previewImages.length > 0 ? previewImages : ["/Placeholders/blueplaceholder.png"]}
                                 socialStats={socialStats}
+                                tiktokStats={tiktokStats}
                             />
                         );
                     }))}
