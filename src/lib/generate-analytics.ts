@@ -93,22 +93,48 @@ export function generateAnalyticsData(
   const followersGrowthPercent = 5 + rand() * 8; // 5% – 13%
   const engagementGrowthPercent = 1 + rand() * 4; // 1% – 5%
 
+  // Helper to securely shuffle arrays deterministically for hydration
+  function shuffle<T>(array: T[]): T[] {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
   // Generate seeded demographic distributions
-  const femaleRatio = 45 + Math.round(rand() * 25);
+  // Real social accounts typically skew heavily one way
+  const skew = rand();
+  let femaleRatio: number;
+  if (skew > 0.4) {
+    // Majority of influencers here are female lifestyle/beauty -> female heavy audience
+    femaleRatio = 65 + Math.round(rand() * 25); // 65% - 90%
+  } else {
+    // Some have heavily male audiences
+    femaleRatio = 10 + Math.round(rand() * 25); // 10% - 35%
+  }
   const maleRatio = 100 - femaleRatio;
 
-  // South African city focus
-  const cities = ["Johannesburg", "Cape Town", "Pretoria", "Durban", "Gqeberha", "Bloemfontein"];
-  const topC1 = Math.round(30 + rand() * 15);
-  const topC2 = Math.round(15 + rand() * 10);
-  const topC3 = Math.round(8 + rand() * 8);
-  const topC4 = Math.round(4 + rand() * 5);
+  // South African city focus - shuffle so it's not always JHB first
+  const allCities = ["Johannesburg", "Cape Town", "Pretoria", "Durban", "Gqeberha", "Bloemfontein", "Polokwane", "Nelspruit"];
+  const cities = shuffle(allCities);
+  
+  // Real city splits are usually top heavy
+  const topC1 = Math.round(25 + rand() * 15); // 25-40%
+  const topC2 = Math.round(12 + rand() * 10); // 12-22%
+  const topC3 = Math.round(6 + rand() * 6);   // 6-12%
+  const topC4 = Math.round(3 + rand() * 4);   // 3-7%
 
-  const countries = ["South Africa", "United States", "United Kingdom", "Nigeria", "Botswana", "Namibia"];
-  const topN1 = Math.round(65 + rand() * 20);
-  const topN2 = Math.round(5 + rand() * 5);
-  const topN3 = Math.round(2 + rand() * 4);
-  const topN4 = Math.round(1 + rand() * 3);
+  const allCountries = ["South Africa", "United States", "United Kingdom", "Nigeria", "Botswana", "Namibia", "Kenya", "Ghana"];
+  // Always keep South Africa as #1, shuffle the rest
+  const otherCountries = shuffle(allCountries.slice(1));
+  const countries = [allCountries[0], ...otherCountries];
+  
+  const topN1 = Math.round(65 + rand() * 20); // 65-85%
+  const topN2 = Math.round(5 + rand() * 8);   // 5-13%
+  const topN3 = Math.round(2 + rand() * 4);   // 2-6%
+  const topN4 = Math.round(1 + rand() * 3);   // 1-4%
 
   const age18 = Math.round(35 + rand() * 20);
   const age25 = Math.round(25 + rand() * 15);
