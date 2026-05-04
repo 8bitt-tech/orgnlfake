@@ -45,6 +45,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             username: "lion.paballo",
             social_stats: { followers: 102000, engagement_rate: "5.4%", total_reach: 155000 },
             tiktok_stats: { followers: 125600, engagement_rate: "8.5%", total_reach: 2500000 },
+            facebook_stats: { followers: 4800, engagement_rate: "3.2%", total_reach: 12000 },
             rate_card: [],
         },
         "barbiie.stallion": {
@@ -176,6 +177,8 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         );
     }
 
+    const facebookStats: any = profileData.facebook_stats || null;
+
     return (
         <div className="min-h-screen pb-20">
             {/* Hero / Header Section */}
@@ -196,6 +199,11 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                             followers: tiktokStats.followers,
                             engagement_rate: tiktokStats.engagement_rate,
                             total_reach: tiktokStats.total_reach
+                        } : null}
+                        facebookStats={facebookStats ? {
+                            followers: facebookStats.followers,
+                            engagement_rate: facebookStats.engagement_rate,
+                            total_reach: facebookStats.total_reach
                         } : null}
                         avatarUrl={avatarUrl}
                         className="mb-12"

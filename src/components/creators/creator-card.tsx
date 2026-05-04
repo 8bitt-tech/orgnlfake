@@ -19,10 +19,11 @@ interface CreatorCardProps {
     avatar?: string;
     socialStats?: SocialStats | null;
     tiktokStats?: SocialStats | null;
+    facebookStats?: SocialStats | null;
     className?: string;
 }
 
-export function CreatorCard({ username, images, avatar, socialStats, tiktokStats, className }: CreatorCardProps) {
+export function CreatorCard({ username, images, avatar, socialStats, tiktokStats, facebookStats, className }: CreatorCardProps) {
     return (
         <div className={cn(
             "group relative rounded-2xl overflow-hidden border border-white/10 bg-black/20 backdrop-blur-sm transition-all hover:border-white/20 hover:shadow-xl hover:shadow-indigo-500/10 no-reveal",
@@ -55,7 +56,7 @@ export function CreatorCard({ username, images, avatar, socialStats, tiktokStats
 
             {/* Stats Section */}
             <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
-                {(socialStats || tiktokStats) && (
+                {(socialStats || tiktokStats || facebookStats) && (
                     <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                         {/* Followers Section */}
                         <div className="p-1.5 sm:p-2 rounded-lg bg-white/5 flex flex-col justify-between">
@@ -74,6 +75,12 @@ export function CreatorCard({ username, images, avatar, socialStats, tiktokStats
                                     <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
                                         <span className="text-muted-foreground/60 font-medium">TT</span>
                                         <span className="font-semibold text-white">{tiktokStats.followers ? formatNumber(tiktokStats.followers) : "—"}</span>
+                                    </div>
+                                )}
+                                {facebookStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">FB</span>
+                                        <span className="font-semibold text-white">{facebookStats.followers ? formatNumber(facebookStats.followers) : "—"}</span>
                                     </div>
                                 )}
                             </div>
@@ -98,6 +105,12 @@ export function CreatorCard({ username, images, avatar, socialStats, tiktokStats
                                         <span className="font-semibold text-white">{tiktokStats.engagement_rate || "—"}</span>
                                     </div>
                                 )}
+                                {facebookStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">FB</span>
+                                        <span className="font-semibold text-white">{facebookStats.engagement_rate || "—"}</span>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
@@ -118,6 +131,12 @@ export function CreatorCard({ username, images, avatar, socialStats, tiktokStats
                                     <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
                                         <span className="text-muted-foreground/60 font-medium">TT</span>
                                         <span className="font-semibold text-white">{tiktokStats.total_reach ? formatNumber(tiktokStats.total_reach) : "—"}</span>
+                                    </div>
+                                )}
+                                {facebookStats && (
+                                    <div className="flex justify-between items-center text-[9px] sm:text-[11px]">
+                                        <span className="text-muted-foreground/60 font-medium">FB</span>
+                                        <span className="font-semibold text-white">{facebookStats.total_reach ? formatNumber(facebookStats.total_reach) : "—"}</span>
                                     </div>
                                 )}
                             </div>

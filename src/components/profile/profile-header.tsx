@@ -16,10 +16,11 @@ interface ProfileHeaderProps {
     avatarUrl?: string | null;
     stats?: SocialStats | null;
     tiktokStats?: SocialStats | null;
+    facebookStats?: SocialStats | null;
     className?: string;
 }
 
-export function ProfileHeader({ username, bio, avatarUrl, stats, tiktokStats, className }: ProfileHeaderProps) {
+export function ProfileHeader({ username, bio, avatarUrl, stats, tiktokStats, facebookStats, className }: ProfileHeaderProps) {
     return (
         <div className={cn("flex flex-col gap-8 md:flex-row md:items-start md:gap-12", className)}>
             {/* Avatar Section */}
@@ -47,7 +48,7 @@ export function ProfileHeader({ username, bio, avatarUrl, stats, tiktokStats, cl
                 </div>
 
                 {/* Stats Grid */}
-                {(stats || tiktokStats) && (
+                {(stats || tiktokStats || facebookStats) && (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-white/10 mt-6">
                         {/* Followers */}
                         <div className="flex flex-col p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
@@ -63,6 +64,12 @@ export function ProfileHeader({ username, bio, avatarUrl, stats, tiktokStats, cl
                                     <div className="flex justify-between items-center pt-3 border-t border-white/5">
                                         <span className="text-sm font-medium text-white/50">TikTok</span>
                                         <span className="text-lg font-bold text-white">{tiktokStats.followers ? tiktokStats.followers.toLocaleString() : "—"}</span>
+                                    </div>
+                                )}
+                                {facebookStats && (
+                                    <div className="flex justify-between items-center pt-3 border-t border-white/5">
+                                        <span className="text-sm font-medium text-white/50">Facebook</span>
+                                        <span className="text-lg font-bold text-white">{facebookStats.followers ? facebookStats.followers.toLocaleString() : "—"}</span>
                                     </div>
                                 )}
                             </div>
@@ -84,6 +91,12 @@ export function ProfileHeader({ username, bio, avatarUrl, stats, tiktokStats, cl
                                         <span className="text-lg font-bold text-white">{tiktokStats.engagement_rate || "—"}</span>
                                     </div>
                                 )}
+                                {facebookStats && (
+                                    <div className="flex justify-between items-center pt-3 border-t border-white/5">
+                                        <span className="text-sm font-medium text-white/50">Facebook</span>
+                                        <span className="text-lg font-bold text-white">{facebookStats.engagement_rate || "—"}</span>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
@@ -101,6 +114,12 @@ export function ProfileHeader({ username, bio, avatarUrl, stats, tiktokStats, cl
                                     <div className="flex justify-between items-center pt-3 border-t border-white/5">
                                         <span className="text-sm font-medium text-white/50">TikTok</span>
                                         <span className="text-lg font-bold text-white">{tiktokStats.total_reach ? tiktokStats.total_reach.toLocaleString() : "—"}</span>
+                                    </div>
+                                )}
+                                {facebookStats && (
+                                    <div className="flex justify-between items-center pt-3 border-t border-white/5">
+                                        <span className="text-sm font-medium text-white/50">Facebook</span>
+                                        <span className="text-lg font-bold text-white">{facebookStats.total_reach ? facebookStats.total_reach.toLocaleString() : "—"}</span>
                                     </div>
                                 )}
                             </div>
