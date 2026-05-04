@@ -16,9 +16,13 @@ export default async function TalentPage() {
         id: string;
         username: string | null;
         avatar?: string;
-        media_assets: unknown;
-        social_stats: unknown;
-        tiktok_stats?: unknown;
+        avatar_url?: string | null;
+        media_assets: any;
+        social_stats: any;
+        tiktok_stats?: any;
+        facebook_stats?: any;
+        created_at?: string | null;
+        updated_at?: string | null;
     };
 
     const { data: creators, error } = await supabase
