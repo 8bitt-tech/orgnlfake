@@ -159,7 +159,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             engagement_rate: socialStats.engagement_rate,
             total_reach: socialStats.total_reach,
         },
-        decodedUsername
+        `${decodedUsername}_ig`
     );
 
     const tiktokStats: any = profileData.tiktok_stats || null;
@@ -171,7 +171,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                 engagement_rate: tiktokStats.engagement_rate,
                 total_reach: tiktokStats.total_reach,
             },
-            decodedUsername
+            `${decodedUsername}_tt`
         );
     }
 
