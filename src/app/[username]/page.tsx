@@ -3,6 +3,7 @@ import { ProfileHeader } from "@/components/profile/profile-header";
 import { RateCardDisplay } from "@/components/profile/rate-card-display";
 import { InstagramAnalytics } from "@/components/profile/instagram-analytics";
 import { TiktokAnalytics } from "@/components/profile/tiktok-analytics";
+import { PaballoBio } from "@/components/profile/paballo-bio";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -222,7 +223,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
 
                         {/* Sidebar / Actions */}
                         <div className="lg:col-span-1 space-y-6">
-                            <div className="p-6 rounded-xl border border-white/10 bg-black/20 backdrop-blur-sm sticky top-24">
+                            <div className="p-6 rounded-xl border border-white/10 bg-black/20 backdrop-blur-sm">
                                 <h3 className="text-lg font-medium text-white mb-4">Interested in working with me?</h3>
                                 <Link
                                     href={`/${decodedUsername}/portfolio`}
@@ -240,6 +241,8 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                                     Contact me for custom packages and collaborations.
                                 </p>
                             </div>
+
+                            {decodedUsername === 'lion.paballo' && <PaballoBio />}
                         </div>
                     </div>
                 </div>
