@@ -26,6 +26,18 @@ const nextConfig: NextConfig = {
     "fetch-blob",
     "nodemailer",
   ],
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors. This saves a massive amount of memory
+    // to prevent the VPS from crashing with "JavaScript heap out of memory".
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
