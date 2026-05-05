@@ -149,7 +149,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "__bellaswrld": "/Profile photos/@__bellaswrld.jpg",
         "they_adore_tshego": "/Profile photos/@they_adore_tshego.jpg",
         "anathii_peter": "/Profile photos/@anathii_peter.jpg",
-        "patriciaboity": "/images/profiles/patriciaboity.jpg",
+        "patriciaboity": "/images/profiles/patriciaboity.webp",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;

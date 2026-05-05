@@ -164,12 +164,12 @@ export default async function TalentPage() {
             {
                 id: "creator-patricia-boity",
                 username: "patriciaboity",
-                avatar: "/images/profiles/patriciaboity.jpg",
+                avatar: "/images/profiles/patriciaboity.webp",
                 media_assets: [
-                    "/Placeholders/blueplaceholder.png",
-                    "/Placeholders/greenplaceholder.png",
-                    "/Placeholders/yellowplaceholder.png",
-                    "/Placeholders/redplaceholder.png"
+                    "/Creators Portfolios/@patriciaboity/compressed/patricia_main.webp",
+                    "/Creators Portfolios/@patriciaboity/compressed/patricia_lifestyle1.webp",
+                    "/Creators Portfolios/@patriciaboity/compressed/patricia_fashion.webp",
+                    "/Creators Portfolios/@patriciaboity/compressed/patricia_beauty.webp"
                 ],
                 social_stats: { followers: 199000, engagement_rate: "5.4%", total_reach: 350000 },
                 tiktok_stats: { followers: 61000, engagement_rate: "9.2%", total_reach: 2500000 }
