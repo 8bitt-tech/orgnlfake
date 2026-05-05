@@ -4,6 +4,7 @@ import { RateCardDisplay } from "@/components/profile/rate-card-display";
 import { InstagramAnalytics } from "@/components/profile/instagram-analytics";
 import { TiktokAnalytics } from "@/components/profile/tiktok-analytics";
 import { PaballoBio } from "@/components/profile/paballo-bio";
+import { BarbiieBio } from "@/components/profile/barbiie-bio";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -51,6 +52,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "barbiie.stallion": {
             username: "barbiie.stallion",
             social_stats: { followers: 323000, engagement_rate: "4.8%", total_reach: 500000 },
+            tiktok_stats: { followers: 580000, engagement_rate: "9.5%", total_reach: 8400000 },
             rate_card: [],
         },
         "boity_tlhasi": {
@@ -251,6 +253,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                             </div>
 
                             {decodedUsername === 'lion.paballo' && <PaballoBio />}
+                            {decodedUsername === 'barbiie.stallion' && <BarbiieBio />}
                         </div>
                     </div>
                 </div>
