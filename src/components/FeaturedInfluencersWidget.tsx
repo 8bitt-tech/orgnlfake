@@ -11,27 +11,27 @@ const mockCreators = [
     handle: '@barbiie.stallion',
     image: '/mediakits/9.jpg',
     avatar: '/media/photos/barbiie_stallion.jpg',
-    followers: '323.0K',
-    engagement: '4.8%',
-    reach: '500.0K',
+    followers: '299.7K',
+    engagement: '9.5%',
+    reach: '5.3M',
   },
   {
     id: 2,
     handle: '@patriciaboity',
     image: '/creators/patriciaboity/main.webp',
     avatar: '/creators/patriciaboity/avatar.webp',
-    followers: '199.0K',
-    engagement: '5.4%',
-    reach: '350.0K',
+    followers: '1.2M',
+    engagement: '9.2%',
+    reach: '23.3M',
   },
   {
     id: 3,
-    handle: '@gorg_fox.rsa',
-    image: '/mediakits/2025-08-19-at-01.29.jpg', 
-    avatar: '/images/profiles/gorg_fox.rsa.jpg',
-    followers: '37.0K',
-    engagement: '6.2%',
-    reach: '55.0K',
+    handle: '@lion.paballo',
+    image: '/media/photos/lion_paballo.jpg', 
+    avatar: '/media/photos/lion_paballo.jpg',
+    followers: '125.6K',
+    engagement: '8.5%',
+    reach: '2.5M',
   },
   {
     id: 4,
@@ -116,7 +116,7 @@ export default function FeaturedInfluencersWidget() {
               {/* Stats Footer */}
               <div className="flex justify-between sm:justify-around items-center bg-transparent backdrop-blur-md p-2 sm:p-4 border-t border-white/5">
                 <div className="text-center px-0.5">
-                  <p className="text-[10px] sm:text-xs text-[#D4A07A]/70 mb-0.5">👥 Follow</p>
+                  <p className="text-[10px] sm:text-xs text-[#D4A07A]/70 mb-0.5">🎵 TikTok</p>
                   <p className="font-bold text-xs sm:text-sm text-[#F5F0EB] truncate">{creator.followers || '0'}</p>
                 </div>
                 <div className="text-center px-0.5">
@@ -124,7 +124,7 @@ export default function FeaturedInfluencersWidget() {
                   <p className="font-bold text-xs sm:text-sm text-[#C9A96E] truncate">{creator.engagement || '0%'}</p>
                 </div>
                 <div className="text-center px-0.5">
-                  <p className="text-[10px] sm:text-xs text-[#D4A07A]/70 mb-0.5">👁️ Reach</p>
+                  <p className="text-[10px] sm:text-xs text-[#D4A07A]/70 mb-0.5">❤️ Likes</p>
                   <p className="font-bold text-xs sm:text-sm text-[#F5F0EB] truncate">{creator.reach || '0'}</p>
                 </div>
               </div>
