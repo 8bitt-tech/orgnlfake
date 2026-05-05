@@ -11,6 +11,7 @@ const mockCreators = [
     handle: '@barbiie.stallion',
     image: '/mediakits/9.jpg',
     avatar: '/media/photos/barbiie_stallion.jpg',
+    objectPosition: 'object-top',
     followers: '299.7K',
     engagement: '9.5%',
     reach: '5.3M',
@@ -98,7 +99,7 @@ export default function FeaturedInfluencersWidget() {
                 <img 
                   src={creator.image || creator.image_url || '/path-to-image1.jpg'} 
                   alt={creator.handle || creator.name || 'Creator'}
-                  className="object-cover w-full h-full"
+                  className={`object-cover w-full h-full ${creator.objectPosition || 'object-center'}`}
                 />
                 
                 {/* Gradient overlay to make text readable */}
