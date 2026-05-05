@@ -21,6 +21,7 @@ export default async function TalentPage() {
         social_stats: any;
         tiktok_stats?: any;
         facebook_stats?: any;
+        youtube_stats?: any;
         created_at?: string | null;
         updated_at?: string | null;
     };
