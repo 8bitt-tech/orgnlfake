@@ -18,8 +18,8 @@ const mockCreators = [
   {
     id: 2,
     handle: '@patriciaboity',
-    image: '/Creators%20Portfolios/@patriciaboity/compressed/patricia_main.webp',
-    avatar: '/images/profiles/patriciaboity.webp',
+    image: '/creators/patriciaboity/main.webp',
+    avatar: '/creators/patriciaboity/avatar.webp',
     followers: '199.0K',
     engagement: '5.4%',
     reach: '350.0K',
