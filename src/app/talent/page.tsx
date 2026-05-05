@@ -173,7 +173,9 @@ export default async function TalentPage() {
                     "/creators/patriciaboity/beauty.webp"
                 ],
                 social_stats: { followers: 199000, engagement_rate: "5.4%", total_reach: 350000 },
-                tiktok_stats: { followers: 1200000, engagement_rate: "9.2%", total_reach: 23300000 }
+                tiktok_stats: { followers: 1200000, engagement_rate: "9.2%", total_reach: 23300000 },
+                facebook_stats: { followers: 258800, engagement_rate: "4.5%", total_reach: 750000 },
+                youtube_stats: { followers: 4270, engagement_rate: "6.1%", total_reach: 12000 }
             }
         ];
     }

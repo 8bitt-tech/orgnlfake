@@ -5,6 +5,7 @@ import { InstagramAnalytics } from "@/components/profile/instagram-analytics";
 import { TiktokAnalytics } from "@/components/profile/tiktok-analytics";
 import { PaballoBio } from "@/components/profile/paballo-bio";
 import { BarbiieBio } from "@/components/profile/barbiie-bio";
+import { PatriciaBio } from "@/components/profile/patricia-bio";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -109,6 +110,8 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             username: "patriciaboity",
             social_stats: { followers: 199000, engagement_rate: "5.4%", total_reach: 350000 },
             tiktok_stats: { followers: 1200000, engagement_rate: "9.2%", total_reach: 23300000 },
+            facebook_stats: { followers: 258800, engagement_rate: "4.5%", total_reach: 750000 },
+            youtube_stats: { followers: 4270, engagement_rate: "6.1%", total_reach: 12000 },
             rate_card: [],
         },
     };
@@ -254,6 +257,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
 
                             {decodedUsername === 'lion.paballo' && <PaballoBio />}
                             {decodedUsername === 'barbiie.stallion' && <BarbiieBio />}
+                            {decodedUsername === 'patriciaboity' && <PatriciaBio />}
                         </div>
                     </div>
                 </div>
