@@ -27,7 +27,7 @@ const mockCreators = [
   {
     id: 3,
     handle: '@lion.paballo',
-    image: '/media/photos/lion_paballo.jpg', 
+    image: '/creators/lion.paballo/cover.jpg', 
     avatar: '/media/photos/lion_paballo.jpg',
     followers: '125.6K',
     engagement: '8.5%',
