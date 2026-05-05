@@ -108,7 +108,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "patriciaboity": {
             username: "patriciaboity",
             social_stats: { followers: 199000, engagement_rate: "5.4%", total_reach: 350000 },
-            tiktok_stats: { followers: 61000, engagement_rate: "9.2%", total_reach: 2500000 },
+            tiktok_stats: { followers: 1200000, engagement_rate: "9.2%", total_reach: 23300000 },
             rate_card: [],
         },
     };
