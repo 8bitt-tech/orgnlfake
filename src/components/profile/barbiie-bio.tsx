@@ -174,7 +174,7 @@ export function BarbiieBio() {
                         <span style={{ color: "#f9a8d4", fontWeight: 500 }}>
                             @barbiie.stallion
                         </span>{" "}
-                        and half a million on TikTok{" "}
+                        and nearly 300K on TikTok{" "}
                         <span style={{ color: "#a5b4fc", fontWeight: 500 }}>
                             @barbiiestallion
                         </span>

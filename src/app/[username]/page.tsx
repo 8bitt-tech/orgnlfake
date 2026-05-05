@@ -52,7 +52,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "barbiie.stallion": {
             username: "barbiie.stallion",
             social_stats: { followers: 323000, engagement_rate: "4.8%", total_reach: 500000 },
-            tiktok_stats: { followers: 580000, engagement_rate: "9.5%", total_reach: 8400000 },
+            tiktok_stats: { followers: 299700, engagement_rate: "9.5%", total_reach: 5300000 },
             rate_card: [],
         },
         "boity_tlhasi": {
