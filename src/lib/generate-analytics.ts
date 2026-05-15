@@ -61,9 +61,15 @@ function seededRandom(seed: string): () => number {
   };
 }
 
+export interface DemographicOverrides {
+  femalePercent?: number;
+  malePercent?: number;
+}
+
 export function generateAnalyticsData(
   stats: SocialStats,
-  username: string = "creator"
+  username: string = "creator",
+  demographicOverrides?: DemographicOverrides
 ): AnalyticsData {
   const followers = stats.followers || 10000;
   const totalReach = stats.total_reach || followers * 2;
@@ -105,16 +111,20 @@ export function generateAnalyticsData(
 
   // Generate seeded demographic distributions
   // Real social accounts typically skew heavily one way
-  const skew = rand();
   let femaleRatio: number;
-  if (skew > 0.4) {
-    // Majority of influencers here are female lifestyle/beauty -> female heavy audience
-    femaleRatio = 65 + Math.round(rand() * 25); // 65% - 90%
+  if (demographicOverrides?.femalePercent != null) {
+    femaleRatio = demographicOverrides.femalePercent;
   } else {
-    // Some have heavily male audiences
-    femaleRatio = 10 + Math.round(rand() * 25); // 10% - 35%
+    const skew = rand();
+    if (skew > 0.4) {
+      // Majority of influencers here are female lifestyle/beauty -> female heavy audience
+      femaleRatio = 65 + Math.round(rand() * 25); // 65% - 90%
+    } else {
+      // Some have heavily male audiences
+      femaleRatio = 10 + Math.round(rand() * 25); // 10% - 35%
+    }
   }
-  const maleRatio = 100 - femaleRatio;
+  const maleRatio = demographicOverrides?.malePercent ?? (100 - femaleRatio);
 
   // South African city focus - shuffle so it's not always JHB first
   const allCities = ["Johannesburg", "Cape Town", "Pretoria", "Durban", "Gqeberha", "Bloemfontein", "Polokwane", "Nelspruit"];

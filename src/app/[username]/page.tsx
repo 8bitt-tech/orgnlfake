@@ -6,6 +6,7 @@ import { TiktokAnalytics } from "@/components/profile/tiktok-analytics";
 import { PaballoBio } from "@/components/profile/paballo-bio";
 import { BarbiieBio } from "@/components/profile/barbiie-bio";
 import { PatriciaBio } from "@/components/profile/patricia-bio";
+import { OmpBio } from "@/components/profile/omp-bio";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -114,6 +115,12 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             youtube_stats: { followers: 4270, engagement_rate: "6.1%", total_reach: 12000 },
             rate_card: [],
         },
+        "omp.abaletse": {
+            username: "omp.abaletse",
+            social_stats: { followers: 151000, engagement_rate: "6.5%", total_reach: 200000 },
+            tiktok_stats: { followers: 115100, engagement_rate: "10.5%", total_reach: 1500000 },
+            rate_card: [],
+        },
     };
 
     // Fetch profile from Supabase, fall back to mock data
@@ -155,6 +162,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "they_adore_tshego": "/Profile photos/@they_adore_tshego.jpg",
         "anathii_peter": "/Profile photos/@anathii_peter.jpg",
         "patriciaboity": "/creators/patriciaboity/avatar.webp",
+        "omp.abaletse": "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;
@@ -172,13 +180,18 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     const tiktokStats: any = profileData.tiktok_stats || null;
     let tiktokAnalyticsData = null;
     if (tiktokStats) {
+        // Per-creator demographic overrides for TikTok
+        const tiktokDemoOverrides: Record<string, { femalePercent: number; malePercent: number }> = {
+            "omp.abaletse": { femalePercent: 76, malePercent: 24 },
+        };
         tiktokAnalyticsData = generateAnalyticsData(
             {
                 followers: tiktokStats.followers,
                 engagement_rate: tiktokStats.engagement_rate,
                 total_reach: tiktokStats.total_reach,
             },
-            `${decodedUsername}_tt`
+            `${decodedUsername}_tt`,
+            tiktokDemoOverrides[decodedUsername]
         );
     }
 
@@ -258,6 +271,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                             {decodedUsername === 'lion.paballo' && <PaballoBio />}
                             {decodedUsername === 'barbiie.stallion' && <BarbiieBio />}
                             {decodedUsername === 'patriciaboity' && <PatriciaBio />}
+                            {decodedUsername === 'omp.abaletse' && <OmpBio />}
                         </div>
                     </div>
                 </div>

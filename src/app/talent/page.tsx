@@ -177,6 +177,18 @@ export default async function TalentPage() {
                 tiktok_stats: { followers: 1200000, engagement_rate: "9.2%", total_reach: 23300000 },
                 facebook_stats: { followers: 258800, engagement_rate: "4.5%", total_reach: 750000 },
                 youtube_stats: { followers: 4270, engagement_rate: "6.1%", total_reach: 12000 }
+            },
+            {
+                id: "creator-omp-abaletse",
+                username: "omp.abaletse",
+                avatar: "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
+                media_assets: [
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149271272802436_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149284853988532_59900339471.jpg"
+                ],
+                social_stats: { followers: 151000, engagement_rate: "6.5%", total_reach: 200000 },
+                tiktok_stats: { followers: 115100, engagement_rate: "10.5%", total_reach: 1500000 }
             }
         ];
     }
