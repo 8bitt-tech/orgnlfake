@@ -33,11 +33,6 @@ const nextConfig: NextConfig = {
     // to prevent the VPS from crashing with "JavaScript heap out of memory".
     ignoreBuildErrors: true,
   },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
 };
 
 export default nextConfig;

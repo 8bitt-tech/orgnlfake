@@ -193,22 +193,22 @@ export default async function TalentPage() {
             {
                 id: "creator-cardenic",
                 username: "cardenic",
-                avatar: "/Placeholders/blueplaceholder.png",
-                media_assets: ["/Placeholders/blueplaceholder.png"],
+                avatar: "/Creators Portfolios/cardenic/avatar.jpg",
+                media_assets: ["/Creators Portfolios/cardenic/avatar.jpg"],
                 social_stats: { followers: 2349, engagement_rate: "7.2%", total_reach: 5000 }
             },
             {
                 id: "creator-miss-lubisi",
                 username: "miss_lubisi",
-                avatar: "/Placeholders/blueplaceholder.png",
-                media_assets: ["/Placeholders/blueplaceholder.png"],
+                avatar: "/Creators Portfolios/miss_lubisi/avatar.jpg",
+                media_assets: ["/Creators Portfolios/miss_lubisi/avatar.jpg"],
                 social_stats: { followers: 8057, engagement_rate: "6.8%", total_reach: 18000 }
             },
             {
                 id: "creator-simply-gugulethu",
                 username: "simply._gugulethu",
-                avatar: "/Placeholders/blueplaceholder.png",
-                media_assets: ["/Placeholders/blueplaceholder.png"],
+                avatar: "/Creators Portfolios/simply_gugulethu/avatar.jpg",
+                media_assets: ["/Creators Portfolios/simply_gugulethu/avatar.jpg"],
                 social_stats: { followers: 1155, engagement_rate: "8.5%", total_reach: 2500 }
             }
         ];
