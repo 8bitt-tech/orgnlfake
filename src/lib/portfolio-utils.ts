@@ -32,8 +32,13 @@ const PLACEHOLDERS = [
 ];
 
 export async function getCreatorPortfolioAssets(username: string) {
-    const dirName = username.startsWith('@') ? username : `@${username}`;
-    const baseDir = path.join(process.cwd(), 'public', 'Creators Portfolios', dirName);
+    const atName = username.startsWith('@') ? username : `@${username}`;
+    const plainName = username.startsWith('@') ? username.slice(1) : username;
+    const atDir = path.join(process.cwd(), 'public', 'Creators Portfolios', atName);
+    const plainDir = path.join(process.cwd(), 'public', 'Creators Portfolios', plainName);
+    // Prefer @username dir, fall back to plain username dir
+    const dirName = fs.existsSync(atDir) ? atName : plainName;
+    const baseDir = fs.existsSync(atDir) ? atDir : plainDir;
     
     const mediaAssets: { url: string; category: string }[] = [];
     const creatorExists = fs.existsSync(baseDir);
@@ -95,7 +100,11 @@ export async function getCreatorPortfolioAssets(username: string) {
 }
 
 export async function getCategoryGalleryImages(username: string, categoryDecoded: string) {
-    const dirName = username.startsWith('@') ? username : `@${username}`;
+    const atName = username.startsWith('@') ? username : `@${username}`;
+    const plainName = username.startsWith('@') ? username.slice(1) : username;
+    const atDir = path.join(process.cwd(), 'public', 'Creators Portfolios', atName);
+    // Prefer @username dir, fall back to plain username dir
+    const dirName = fs.existsSync(atDir) ? atName : plainName;
     
     // Find the right category folder name
     const catDef = CATEGORIES.find(c => c.name.toLowerCase() === categoryDecoded.toLowerCase());
@@ -120,8 +129,13 @@ export async function getCategoryGalleryImages(username: string, categoryDecoded
 }
 
 export async function getCreatorScatterAssets(username: string) {
-    const dirName = username.startsWith('@') ? username : `@${username}`;
-    const baseDir = path.join(process.cwd(), 'public', 'Creators Portfolios', dirName);
+    const atName = username.startsWith('@') ? username : `@${username}`;
+    const plainName = username.startsWith('@') ? username.slice(1) : username;
+    const atDir = path.join(process.cwd(), 'public', 'Creators Portfolios', atName);
+    const plainDir = path.join(process.cwd(), 'public', 'Creators Portfolios', plainName);
+    // Prefer @username dir, fall back to plain username dir
+    const dirName = fs.existsSync(atDir) ? atName : plainName;
+    const baseDir = fs.existsSync(atDir) ? atDir : plainDir;
     
     const scatterImages: string[] = [];
     let heroVideoUrl: string | null = null;

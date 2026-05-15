@@ -183,9 +183,17 @@ export default async function TalentPage() {
                 username: "omp.abaletse",
                 avatar: "/Creators Portfolios/omp.abaletse/avatar.jpg",
                 media_assets: [
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428331655806271_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428345807401652_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428357115226198_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428365965206449_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428368339206705_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428376811729650_59900339471.jpg",
                     "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
                     "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149271272802436_59900339471.jpg",
-                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149284853988532_59900339471.jpg"
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149284853988532_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149313199106681_59900339471.jpg",
+                    "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149325505176160_59900339471.jpg"
                 ],
                 social_stats: { followers: 151000, engagement_rate: "6.5%", total_reach: 200000 },
                 tiktok_stats: { followers: 115100, engagement_rate: "10.5%", total_reach: 1500000 }
