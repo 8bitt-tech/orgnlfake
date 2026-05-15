@@ -52,3 +52,4 @@ test_ig_pfp.py
 
 # Ignore large media files
 public/media/videos/Motion\ Pictures/**/*.mp4
+temp_ig/
