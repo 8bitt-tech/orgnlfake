@@ -189,6 +189,27 @@ export default async function TalentPage() {
                 ],
                 social_stats: { followers: 151000, engagement_rate: "6.5%", total_reach: 200000 },
                 tiktok_stats: { followers: 115100, engagement_rate: "10.5%", total_reach: 1500000 }
+            },
+            {
+                id: "creator-cardenic",
+                username: "cardenic",
+                avatar: "/Placeholders/blueplaceholder.png",
+                media_assets: ["/Placeholders/blueplaceholder.png"],
+                social_stats: { followers: 2349, engagement_rate: "7.2%", total_reach: 5000 }
+            },
+            {
+                id: "creator-miss-lubisi",
+                username: "miss_lubisi",
+                avatar: "/Placeholders/blueplaceholder.png",
+                media_assets: ["/Placeholders/blueplaceholder.png"],
+                social_stats: { followers: 8057, engagement_rate: "6.8%", total_reach: 18000 }
+            },
+            {
+                id: "creator-simply-gugulethu",
+                username: "simply._gugulethu",
+                avatar: "/Placeholders/blueplaceholder.png",
+                media_assets: ["/Placeholders/blueplaceholder.png"],
+                social_stats: { followers: 1155, engagement_rate: "8.5%", total_reach: 2500 }
             }
         ];
     }

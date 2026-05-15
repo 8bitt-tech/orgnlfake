@@ -7,6 +7,9 @@ import { PaballoBio } from "@/components/profile/paballo-bio";
 import { BarbiieBio } from "@/components/profile/barbiie-bio";
 import { PatriciaBio } from "@/components/profile/patricia-bio";
 import { OmpBio } from "@/components/profile/omp-bio";
+import { CardenicBio } from "@/components/profile/cardenic-bio";
+import { LubisiBio } from "@/components/profile/lubisi-bio";
+import { GugulethuBio } from "@/components/profile/gugulethu-bio";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -121,6 +124,21 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             tiktok_stats: { followers: 115100, engagement_rate: "10.5%", total_reach: 1500000 },
             rate_card: [],
         },
+        "cardenic": {
+            username: "cardenic",
+            social_stats: { followers: 2349, engagement_rate: "7.2%", total_reach: 5000 },
+            rate_card: [],
+        },
+        "miss_lubisi": {
+            username: "miss_lubisi",
+            social_stats: { followers: 8057, engagement_rate: "6.8%", total_reach: 18000 },
+            rate_card: [],
+        },
+        "simply._gugulethu": {
+            username: "simply._gugulethu",
+            social_stats: { followers: 1155, engagement_rate: "8.5%", total_reach: 2500 },
+            rate_card: [],
+        },
     };
 
     // Fetch profile from Supabase, fall back to mock data
@@ -163,6 +181,9 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "anathii_peter": "/Profile photos/@anathii_peter.jpg",
         "patriciaboity": "/creators/patriciaboity/avatar.webp",
         "omp.abaletse": "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
+        "cardenic": "/Placeholders/blueplaceholder.png",
+        "miss_lubisi": "/Placeholders/blueplaceholder.png",
+        "simply._gugulethu": "/Placeholders/blueplaceholder.png",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;
@@ -272,6 +293,9 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                             {decodedUsername === 'barbiie.stallion' && <BarbiieBio />}
                             {decodedUsername === 'patriciaboity' && <PatriciaBio />}
                             {decodedUsername === 'omp.abaletse' && <OmpBio />}
+                            {decodedUsername === 'cardenic' && <CardenicBio />}
+                            {decodedUsername === 'miss_lubisi' && <LubisiBio />}
+                            {decodedUsername === 'simply._gugulethu' && <GugulethuBio />}
                         </div>
                     </div>
                 </div>
