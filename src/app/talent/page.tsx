@@ -181,7 +181,7 @@ export default async function TalentPage() {
             {
                 id: "creator-omp-abaletse",
                 username: "omp.abaletse",
-                avatar: "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
+                avatar: "/Creators Portfolios/omp.abaletse/avatar.jpg",
                 media_assets: [
                     "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149256877947884_59900339471.jpg",
                     "/Creators Portfolios/omp.abaletse/omp.abaletse_1777127734_3883149271272802436_59900339471.jpg",
