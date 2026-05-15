@@ -210,6 +210,20 @@ export default async function TalentPage() {
                 avatar: "/Creators Portfolios/simply_gugulethu/avatar.jpg",
                 media_assets: ["/Creators Portfolios/simply_gugulethu/avatar.jpg"],
                 social_stats: { followers: 1155, engagement_rate: "8.5%", total_reach: 2500 }
+            },
+            {
+                id: "creator-kaarabo-o",
+                username: "kaarabo.o__",
+                avatar: "/Creators Portfolios/kaarabo.o__/avatar.jpg",
+                media_assets: ["/Creators Portfolios/kaarabo.o__/avatar.jpg"],
+                social_stats: { followers: 2644, engagement_rate: "8.5%", total_reach: 5000 }
+            },
+            {
+                id: "creator-namedkeamokgetswe",
+                username: "namedkeamokgetswe",
+                avatar: "/Creators Portfolios/namedkeamokgetswe/avatar.jpg",
+                media_assets: ["/Creators Portfolios/namedkeamokgetswe/avatar.jpg"],
+                social_stats: { followers: 130000, engagement_rate: "7.5%", total_reach: 200000 }
             }
         ];
     }
