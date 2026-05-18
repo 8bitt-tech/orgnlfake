@@ -7,6 +7,15 @@ import { createClient } from '@/lib/supabase/client';
 // Mock data fallback matching your actual image paths
 const mockCreators = [
   {
+    id: 4,
+    handle: '@omp.abaletse',
+    image: '/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428331655806271_59900339471.jpg',
+    avatar: '/Creators Portfolios/omp.abaletse/avatar.jpg',
+    followers: '115.1K',
+    engagement: '10.5%',
+    reach: '1.5M',
+  },
+  {
     id: 1,
     handle: '@barbiie.stallion',
     image: '/mediakits/9.jpg',
@@ -33,15 +42,6 @@ const mockCreators = [
     followers: '125.6K',
     engagement: '8.5%',
     reach: '2.5M',
-  },
-  {
-    id: 4,
-    handle: '@momobabes21',
-    image: '/mediakits/_MG_0048 2.jpg',
-    avatar: '/images/profiles/momobabes21.jpg',
-    followers: '64.0K',
-    engagement: '8.1%',
-    reach: '95.0K',
   }
 ];
 
