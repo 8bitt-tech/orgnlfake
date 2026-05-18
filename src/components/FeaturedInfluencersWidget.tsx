@@ -11,6 +11,7 @@ const mockCreators = [
     handle: '@omp.abaletse',
     image: '/Creators Portfolios/omp.abaletse/omp.abaletse_1777161244_3883428331655806271_59900339471.jpg',
     avatar: '/Creators Portfolios/omp.abaletse/avatar.jpg',
+    objectPosition: 'object-top',
     followers: '115.1K',
     engagement: '10.5%',
     reach: '1.5M',
