@@ -246,7 +246,7 @@ export default async function TalentPage() {
                 username: "forever__yena",
                 avatar: "/Creators Portfolios/forever__yena/avatar.jpg",
                 media_assets: ["/Creators Portfolios/forever__yena/avatar.jpg"],
-                social_stats: { followers: 15000, engagement_rate: "6.0%", total_reach: 30000 },
+                social_stats: { followers: 33000, engagement_rate: "6.0%", total_reach: 50000 },
                 tiktok_stats: { followers: 16400, engagement_rate: "8.0%", total_reach: 50000 }
             }
         ];

@@ -161,7 +161,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         },
         "forever__yena": {
             username: "forever__yena",
-            social_stats: { followers: 15000, engagement_rate: "6.0%", total_reach: 30000 },
+            social_stats: { followers: 33000, engagement_rate: "6.0%", total_reach: 50000 },
             tiktok_stats: { followers: 16400, engagement_rate: "8.0%", total_reach: 50000 },
             rate_card: [],
         },
