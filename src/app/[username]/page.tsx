@@ -213,7 +213,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "kaarabo.o__": "/Creators Portfolios/kaarabo.o__/avatar.jpg",
         "namedkeamokgetswe": "/Creators Portfolios/namedkeamokgetswe/avatar.jpg",
         "stunna.grl.pearl": "/Creators Portfolios/stunna.grl.pearl/avatar.jpg",
-        "forever__yena": "/Creators Portfolios/forever__yena/avatar.jpg",
+        "forever__yena": "/Creators Portfolios/forever__yena/avatar_v2.jpg",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;
