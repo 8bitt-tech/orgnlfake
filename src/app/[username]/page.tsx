@@ -212,8 +212,8 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "simply._gugulethu": "/Placeholders/blueplaceholder.png",
         "kaarabo.o__": "/Creators Portfolios/kaarabo.o__/avatar.jpg",
         "namedkeamokgetswe": "/Creators Portfolios/namedkeamokgetswe/avatar.jpg",
-        "stunna.grl.pearl": "/Placeholders/blueplaceholder.png",
-        "forever__yena": "/Placeholders/blueplaceholder.png",
+        "stunna.grl.pearl": "/Creators Portfolios/stunna.grl.pearl/avatar.jpg",
+        "forever__yena": "/Creators Portfolios/forever__yena/avatar.jpg",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;

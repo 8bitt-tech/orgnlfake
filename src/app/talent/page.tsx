@@ -236,16 +236,16 @@ export default async function TalentPage() {
             {
                 id: "creator-stunna-grl-pearl",
                 username: "stunna.grl.pearl",
-                avatar: "/Placeholders/blueplaceholder.png",
-                media_assets: ["/Placeholders/blueplaceholder.png"],
+                avatar: "/Creators Portfolios/stunna.grl.pearl/avatar.jpg",
+                media_assets: ["/Creators Portfolios/stunna.grl.pearl/avatar.jpg"],
                 social_stats: { followers: 182500, engagement_rate: "5.5%", total_reach: 250000 },
                 tiktok_stats: { followers: 4259, engagement_rate: "8.5%", total_reach: 50000 }
             },
             {
                 id: "creator-forever-yena",
                 username: "forever__yena",
-                avatar: "/Placeholders/blueplaceholder.png",
-                media_assets: ["/Placeholders/blueplaceholder.png"],
+                avatar: "/Creators Portfolios/forever__yena/avatar.jpg",
+                media_assets: ["/Creators Portfolios/forever__yena/avatar.jpg"],
                 social_stats: { followers: 15000, engagement_rate: "6.0%", total_reach: 30000 },
                 tiktok_stats: { followers: 16400, engagement_rate: "8.0%", total_reach: 50000 }
             }
