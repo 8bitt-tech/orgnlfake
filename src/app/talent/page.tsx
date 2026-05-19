@@ -236,8 +236,8 @@ export default async function TalentPage() {
             {
                 id: "creator-stunna-grl-pearl",
                 username: "stunna.grl.pearl",
-                avatar: "/Creators Portfolios/stunna.grl.pearl/avatar.jpg",
-                media_assets: ["/Creators Portfolios/stunna.grl.pearl/avatar.jpg"],
+                avatar: "/Creators Portfolios/stunna.grl.pearl/avatar_v2.jpg",
+                media_assets: ["/Creators Portfolios/stunna.grl.pearl/avatar_v2.jpg"],
                 social_stats: { followers: 182500, engagement_rate: "5.5%", total_reach: 250000 },
                 tiktok_stats: { followers: 4259, engagement_rate: "8.5%", total_reach: 50000 }
             },
