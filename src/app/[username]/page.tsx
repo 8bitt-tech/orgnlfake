@@ -13,6 +13,7 @@ import { GugulethuBio } from "@/components/profile/gugulethu-bio";
 import { KaaraboBio } from "@/components/profile/kaarabo-bio";
 import { KeamokgetsweBio } from "@/components/profile/keamokgetswe-bio";
 import { StunnaBio } from "@/components/profile/stunna-bio";
+import { ForeverYenaBio } from "@/components/profile/forever-yena-bio";
 import { generateAnalyticsData } from "@/lib/generate-analytics";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -158,6 +159,12 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             tiktok_stats: { followers: 4259, engagement_rate: "8.5%", total_reach: 50000 },
             rate_card: [],
         },
+        "forever__yena": {
+            username: "forever__yena",
+            social_stats: { followers: 15000, engagement_rate: "6.0%", total_reach: 30000 },
+            tiktok_stats: { followers: 16400, engagement_rate: "8.0%", total_reach: 50000 },
+            rate_card: [],
+        },
     };
 
     // Fetch profile from Supabase, fall back to mock data
@@ -206,6 +213,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         "kaarabo.o__": "/Creators Portfolios/kaarabo.o__/avatar.jpg",
         "namedkeamokgetswe": "/Creators Portfolios/namedkeamokgetswe/avatar.jpg",
         "stunna.grl.pearl": "/Placeholders/blueplaceholder.png",
+        "forever__yena": "/Placeholders/blueplaceholder.png",
     };
 
     const avatarUrl = profileData.avatar_url || mockAvatars[decodedUsername] || null;
@@ -321,6 +329,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
                             {decodedUsername === 'kaarabo.o__' && <KaaraboBio />}
                             {decodedUsername === 'namedkeamokgetswe' && <KeamokgetsweBio />}
                             {decodedUsername === 'stunna.grl.pearl' && <StunnaBio />}
+                            {decodedUsername === 'forever__yena' && <ForeverYenaBio />}
                         </div>
                     </div>
                 </div>
