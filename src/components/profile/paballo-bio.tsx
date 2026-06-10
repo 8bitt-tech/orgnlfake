@@ -373,6 +373,43 @@ export function PaballoBio() {
                         ...and many more!
                     </p>
                 </div>
+
+                {/* Rates Button */}
+                <div style={{ marginTop: "20px" }}>
+                    <a
+                        href="/creators/lion.paballo/rates.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "8px",
+                            width: "100%",
+                            padding: "12px 24px",
+                            borderRadius: "12px",
+                            background: "linear-gradient(135deg, #f97316 0%, #ec4899 100%)",
+                            color: "#ffffff",
+                            fontWeight: 600,
+                            fontSize: "14px",
+                            textDecoration: "none",
+                            boxShadow: "0 4px 15px rgba(249, 115, 22, 0.3)",
+                            transition: "all 0.2s ease-in-out",
+                            cursor: "pointer"
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = "translateY(-2px)";
+                            e.currentTarget.style.boxShadow = "0 6px 20px rgba(249, 115, 22, 0.5)";
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "0 4px 15px rgba(249, 115, 22, 0.3)";
+                        }}
+                    >
+                        <Sparkles style={{ width: 16, height: 16 }} />
+                        View Rate Card & Rates
+                    </a>
+                </div>
             </div>
         </div>
     );
