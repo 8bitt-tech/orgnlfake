@@ -50,6 +50,14 @@ export function EditorialPortfolio({ username, mediaAssets, heroVideoUrl, scatte
     // Use state to track the auto-slide offset
     const [offset, setOffset] = React.useState(0);
 
+    const isPaballo = username === "lion.paballo" || username === "paballo";
+    const bookingEmail = isPaballo
+        ? "booking@orgnlfake.agency,paballolion@gmail.com"
+        : "bookings@orgnlfake.agency";
+    const displayEmail = isPaballo
+        ? "booking@orgnlfake.agency / paballolion@gmail.com"
+        : "bookings@orgnlfake.agency";
+
     // Keep all assets for the masonry grid, no filtering out!
     const images = mediaAssets;
 
@@ -590,7 +598,7 @@ export function EditorialPortfolio({ username, mediaAssets, heroVideoUrl, scatte
                             />
                             {/* Invisible overlay buttons */}
                             <a
-                                href={`mailto:bookings@orgnlfake.agency?subject=Booking%20${username}`}
+                                href={`mailto:${bookingEmail}?subject=Booking%20${username}`}
                                 className="waabi-cover-btn waabi-cover-btn--book"
                                 aria-label="Book Me"
                             />
@@ -716,9 +724,9 @@ export function EditorialPortfolio({ username, mediaAssets, heroVideoUrl, scatte
                 <div className="waabi-outro">
                     <h2>Bookings &amp; Inquiries</h2>
                     <a
-                        href={`mailto:bookings@orgnlfake.agency?subject=Booking%20${username}`}
+                        href={`mailto:${bookingEmail}?subject=Booking%20${username}`}
                     >
-                        bookings@orgnlfake.agency
+                        {displayEmail}
                     </a>
                 </div>
             </div>
